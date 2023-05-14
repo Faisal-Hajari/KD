@@ -3,6 +3,7 @@
 1. Data-free KD 
 2. Multi-modality KD 
 3. KD for generative models
+4. KD for segmentation (tasks other than classification are tackled less)
 ## Papers from [CVPR2023](https://cvpr2023.thecvf.com/Conferences/2023/AcceptedPapers): 
 20 papers (might missed some papers)
 | Title      | 
