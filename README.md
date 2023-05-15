@@ -30,7 +30,7 @@
 |[Probabilistic Knowledge Distillation for Face Ensembles]()  - unavilabel  |
 |[DaFKD: Domain-aware Federated Knowledge Distillation](https://www.preprints.org/manuscript/202303.0432/download/final_file)  |
 ## Papers from [CVPR2022](https://openaccess.thecvf.com/CVPR2022?day=all): 
- papers (might missed some papers)
+21 papers (might missed some papers)
  | Title      | 
 | ----------- |
 |[Focal and Global Knowledge Distillation for Detectors](https://openaccess.thecvf.com/content/CVPR2022/papers/Yang_Focal_and_Global_Knowledge_Distillation_for_Detectors_CVPR_2022_paper.pdf)|
