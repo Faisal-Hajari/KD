@@ -16,7 +16,7 @@
 |[KD-GAN: Data Limited Image Generation via Knowledge Distillation](https://arxiv.org/abs/2303.17158)  |
 |[Generalization Matters: Loss Minima Flattening via Parameter Hybridization for Efficient Online Knowledge Distillation](https://arxiv.org/abs/2303.14666)  |
 |[Knowledge Distillation for 6D Pose Estimation by Aligning Distributions of Local Predictions](https://arxiv.org/abs/2205.14971)  |
-|[Rethinking Feature-based Knowledge Distillation for Face Recognition]()  - unavilabel  |
+|[Rethinking Feature-based Knowledge Distillation for Face Recognition](https://openaccess.thecvf.com/content/CVPR2023/papers/Li_Rethinking_Feature-Based_Knowledge_Distillation_for_Face_Recognition_CVPR_2023_paper.pdf) |
 |[Supervised Masked Knowledge Distillation for Few-Shot Transformers ](https://arxiv.org/abs/2303.15466)  |
 |[Data-Free Knowledge Distillation via Feature Exchange and Activation Region Constraint]()  - unavilabel  |
 |[Class Attention Transfer Based Knowledge Distillation](https://arxiv.org/pdf/2304.12777.pdf)  |
@@ -54,3 +54,46 @@
 |[Multi-Objective Diverse Human Motion Prediction With Knowledge Distillation](https://openaccess.thecvf.com/content/CVPR2022/papers/Ma_Multi-Objective_Diverse_Human_Motion_Prediction_With_Knowledge_Distillation_CVPR_2022_paper.pdf)|
 |[Structural and Statistical Texture Knowledge Distillation for Semantic Segmentation](https://openaccess.thecvf.com/content/CVPR2022/papers/Ji_Structural_and_Statistical_Texture_Knowledge_Distillation_for_Semantic_Segmentation_CVPR_2022_paper.pdf)|
 |[Fine-Tuning Global Model via Data-Free Knowledge Distillation for Non-IID Federated Learning](https://openaccess.thecvf.com/content/CVPR2022/papers/Zhang_Fine-Tuning_Global_Model_via_Data-Free_Knowledge_Distillation_for_Non-IID_Federated_CVPR_2022_paper.pdf)|
+
+# Multi-Model
+## Area for research: 
+1. CLIP in point-cloud/3D. 
+2. Open-Vocabulary Object Detection (OVD)
+3. effecent CLIP training (better use of computation or data)
+## Papers from [CVPR2023](https://cvpr2023.thecvf.com/Conferences/2023/AcceptedPapers): 
+__ papers (might missed some papers)
+| Title      | 
+| ----------- |
+|[Local 3D Editing via 3D Distillation of CLIP Knowledge - unavilabel]()|
+|[AttriCLIP: A Non-Incremental Learner for Incremental Knowledge Learning - unavilabel]()|
+|[ShapeClipper: Scalable 3D Shape Learning from Single-View Images via Geometric and CLIP-based Consistency](https://zixuanh.com/projects/shapeclipper.html)|
+|[CLIP2: Contrastive Language-Image-Point Pretraining From Real-World Point Cloud Data](https://openaccess.thecvf.com/content/CVPR2023/papers/Zeng_CLIP2_Contrastive_Language-Image-Point_Pretraining_From_Real-World_Point_Cloud_Data_CVPR_2023_paper.pdf)|
+|[DetCLIPv2: Scalable Open-Vocabulary Object Detection Pre-training via Word-Region Alignment](https://arxiv.org/abs/2304.04514)|
+|[DisCo-CLIP: A Distributed Contrastive Loss for Memory Efficient CLIP Training](https://arxiv.org/abs/2304.08480)|
+|[Fine-Tuned CLIP Models Are Efficient Video Learners](https://openaccess.thecvf.com/content/CVPR2023/papers/Rasheed_Fine-Tuned_CLIP_Models_Are_Efficient_Video_Learners_CVPR_2023_paper.pdf)|
+|[Vita-CLIP: Video and text adaptive CLIP via Multimodal Prompting](https://arxiv.org/abs/2304.03307)|
+|[CLIP Is Also an Efficient Segmenter: A Text-Driven Approach for Weakly Supervised Semantic Segmentation](https://openaccess.thecvf.com/content/CVPR2023/papers/Lin_CLIP_Is_Also_an_Efficient_Segmenter_A_Text-Driven_Approach_for_CVPR_2023_paper.pdf)|
+|[HOICLIP: Efficient Knowledge Transfer for HOI Detection with Vision-Language Models](https://arxiv.org/abs/2303.15786)|
+|[Learning to Name Classes for Vision and Language Models](https://openaccess.thecvf.com/content/CVPR2023/papers/Parisot_Learning_To_Name_Classes_for_Vision_and_Language_Models_CVPR_2023_paper.pdf)|
+|[Scaling Language-Image Pre-training via Masking](https://openaccess.thecvf.com/content/CVPR2023/papers/Li_Scaling_Language-Image_Pre-Training_via_Masking_CVPR_2023_paper.pdf)|
+|[CLIP2Protect: Protecting Facial Privacy using Text-Guided Makeup via
+Adversarial Latent Search](https://openaccess.thecvf.com/content/CVPR2023/papers/Shamshad_CLIP2Protect_Protecting_Facial_Privacy_Using_Text-Guided_Makeup_via_Adversarial_Latent_CVPR_2023_paper.pdf)|
+|[WinCLIP: Zero-/Few-Shot Anomaly Classification and Segmentation](https://openaccess.thecvf.com/content/CVPR2023/papers/Jeong_WinCLIP_Zero-Few-Shot_Anomaly_Classification_and_Segmentation_CVPR_2023_paper.pdf)|
+|[CLIP-Sculptor: Zero-Shot Generation of High-Fidelity and Diverse Shapes From Natural Language](https://openaccess.thecvf.com/content/CVPR2023/papers/Sanghi_CLIP-Sculptor_Zero-Shot_Generation_of_High-Fidelity_and_Diverse_Shapes_From_Natural_CVPR_2023_paper.pdf)|
+|[Multimodality Helps Unimodality: Cross-Modal Few-Shot Learning with Multimodal Models](https://openaccess.thecvf.com/content/CVPR2023/papers/Lin_Multimodality_Helps_Unimodality_Cross-Modal_Few-Shot_Learning_With_Multimodal_Models_CVPR_2023_paper.pdf)|
+|[CrowdCLIP: Unsupervised Crowd Counting via Vision-Language Model ](https://openaccess.thecvf.com/content/CVPR2023/papers/Liang_CrowdCLIP_Unsupervised_Crowd_Counting_via_Vision-Language_Model_CVPR_2023_paper.pdf)|
+|[]()|
+|[]()|
+|[]()|
+|[]()|
+|[]()|
+|[]()|
+|[]()|
+|[]()|
+|[]()|
+|[]()|
+|[]()|
+|[]()|
+|[]()|
+|[]()|
+|[]()|
