@@ -76,8 +76,7 @@ __ papers (might missed some papers)
 |[HOICLIP: Efficient Knowledge Transfer for HOI Detection with Vision-Language Models](https://arxiv.org/abs/2303.15786)|
 |[Learning to Name Classes for Vision and Language Models](https://openaccess.thecvf.com/content/CVPR2023/papers/Parisot_Learning_To_Name_Classes_for_Vision_and_Language_Models_CVPR_2023_paper.pdf)|
 |[Scaling Language-Image Pre-training via Masking](https://openaccess.thecvf.com/content/CVPR2023/papers/Li_Scaling_Language-Image_Pre-Training_via_Masking_CVPR_2023_paper.pdf)|
-|[CLIP2Protect: Protecting Facial Privacy using Text-Guided Makeup via
-Adversarial Latent Search](https://openaccess.thecvf.com/content/CVPR2023/papers/Shamshad_CLIP2Protect_Protecting_Facial_Privacy_Using_Text-Guided_Makeup_via_Adversarial_Latent_CVPR_2023_paper.pdf)|
+|[CLIP2Protect: Protecting Facial Privacy using Text-Guided Makeup via Adversarial Latent Search](https://openaccess.thecvf.com/content/CVPR2023/papers/Shamshad_CLIP2Protect_Protecting_Facial_Privacy_Using_Text-Guided_Makeup_via_Adversarial_Latent_CVPR_2023_paper.pdf)|
 |[WinCLIP: Zero-/Few-Shot Anomaly Classification and Segmentation](https://openaccess.thecvf.com/content/CVPR2023/papers/Jeong_WinCLIP_Zero-Few-Shot_Anomaly_Classification_and_Segmentation_CVPR_2023_paper.pdf)|
 |[CLIP-Sculptor: Zero-Shot Generation of High-Fidelity and Diverse Shapes From Natural Language](https://openaccess.thecvf.com/content/CVPR2023/papers/Sanghi_CLIP-Sculptor_Zero-Shot_Generation_of_High-Fidelity_and_Diverse_Shapes_From_Natural_CVPR_2023_paper.pdf)|
 |[Multimodality Helps Unimodality: Cross-Modal Few-Shot Learning with Multimodal Models](https://openaccess.thecvf.com/content/CVPR2023/papers/Lin_Multimodality_Helps_Unimodality_Cross-Modal_Few-Shot_Learning_With_Multimodal_Models_CVPR_2023_paper.pdf)|
