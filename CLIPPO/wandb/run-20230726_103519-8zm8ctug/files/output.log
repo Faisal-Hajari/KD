@@ -1,0 +1,29 @@
+Data loaded: there are 2555428 images.
+model and optimizer are ready.
+Starting clippo training !
+Error in sys.excepthook:
+Traceback (most recent call last):
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/wandb/sdk/lib/exit_hooks.py", line 42, in exc_handler
+    def exc_handler(
+KeyboardInterrupt
+Original exception was:
+Traceback (most recent call last):
+  File "/home/temp/Desktop/KD/CLIPPO/train.py", line 152, in <module>
+    main(args)
+  File "/home/temp/Desktop/KD/CLIPPO/train.py", line 112, in main
+    loss = train_one_epoch(clippo, data_loader, optimizer,
+  File "/home/temp/Desktop/KD/CLIPPO/train.py", line 17, in train_one_epoch
+    for images, text in data_loader:
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 628, in __next__
+    data = self._next_data()
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1316, in _next_data
+    idx, data = self._get_data()
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1272, in _get_data
+    success, data = self._try_get_data()
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1120, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/queue.py", line 180, in get
+    self.not_empty.wait(remaining)
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/threading.py", line 316, in wait
+    gotit = waiter.acquire(True, timeout)
+KeyboardInterrupt

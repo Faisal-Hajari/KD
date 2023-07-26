@@ -6,17 +6,22 @@ import torch.backends.cudnn as cudnn
 from torchvision import datasets, transforms
 import torch 
 from torch import nn 
+import wandb
 
 import utils
 from dataset import CC3M
 from network import CLIPPO
 
 def train_one_epoch(clippo, data_loader, optimizer, lr_schedule, epoch, fp16_scaler, args): 
+    total_loss = 0.0
     for images, text in data_loader: 
-        images = images.cuda() 
-        text = text.cuda() 
         with torch.cuda.amp.autocast(fp16_scaler is not None):
+            images = images.cuda() 
+            text = text.cuda() 
             loss = clippo(image=images, text=text)
+            if utils.get_rank() == 0:
+                wandb.log({"mini_batch_loss": loss.item()})
+
 
         if not math.isfinite(loss.item()):
             print("Loss is {}, stopping training".format(loss.item()), force=True)
@@ -35,16 +40,33 @@ def train_one_epoch(clippo, data_loader, optimizer, lr_schedule, epoch, fp16_sca
                 param_norms = utils.clip_gradients(clippo, args.clip_grad)
             fp16_scaler.step(optimizer)
             fp16_scaler.update()
-        
-        # print('it')
-        #TODO: return logs 
-        #torch.cuda.synchronize()
+        total_loss += loss.item()
+    
+        if utils.get_rank() == 0:
+            torch.save(clippo.state_dict(), 'clippo.pt')
+    # print(loss)
+    # print("HELLO")
+    #TODO: return logs 
+    # torch.cuda.synchronize()
+    # return loss.item()
 
 def main(args): 
     utils.init_distributed_mode(args)
     utils.fix_random_seeds(args.seed)
     cudnn.benchmark = True
-
+    if utils.get_rank() == 0:
+        wandb.init(
+            # set the wandb project where this run will be logged
+            project="my-awesome-project",
+            
+            # track hyperparameters and run metadata
+            config={
+                "learning_rate": args.lr * (args.batch_size_per_gpu * utils.get_world_size()) / 256.,
+                "architecture": "CLIPPO",
+                "dataset": "CC3M_test",
+                "epochs": args.epochs,
+            }
+        )
     transform = transforms.Compose([
         transforms.ToTensor(), 
         transforms.Normalize(mean=[0.485, 0.456, 0.406],
@@ -84,18 +106,19 @@ def main(args):
     start_epoch = 0 
     print("Starting clippo training !")
     for epoch in range(start_epoch, args.epochs):
-        data_loader.sampler.set_epoch(epoch)
+        # data_loader.sampler.set_epoch(epoch)
 
         # ============ training one epoch of CLIPPO ... ============
-        train_one_epoch(clippo, data_loader, optimizer,
+        loss = train_one_epoch(clippo, data_loader, optimizer,
                         lr_schedule, epoch, fp16_scaler, args)
         
         # ============ writing logs ... ============
         #TODO: add logs 
-        print(epoch)
-
+        # print(loss)
+    if utils.get_rank() == 0:
+        torch.save(clippo.state_dict(), 'clippo.pt')
 def get_args_parser():
-    parser = argparse.ArgumentParser('DINO', add_help=False)
+    parser = argparse.ArgumentParser('CLIPPO', add_help=False)
 
     parser.add_argument('--clip_grad', type=float, default=3.0, help="""Maximal parameter
         gradient norm if using gradient clipping. Clipping with norm .3 ~ 1.0 can
@@ -121,14 +144,6 @@ def get_args_parser():
     parser.add_argument("--local_rank", default=0, type=int, help="Please ignore and do not set this argument.")
 
     return parser
-
-
-
-
-
-
-
-
 
 
 if __name__ == '__main__': 

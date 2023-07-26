@@ -1,0 +1,35 @@
+Data loaded: there are 2555428 images.
+model and optimizer are ready.
+Starting clippo training !
+Traceback (most recent call last):
+  File "/home/temp/Desktop/KD/CLIPPO/train.py", line 152, in <module>
+    main(args)
+  File "/home/temp/Desktop/KD/CLIPPO/train.py", line 112, in main
+    loss = train_one_epoch(clippo, data_loader, optimizer,
+  File "/home/temp/Desktop/KD/CLIPPO/train.py", line 17, in train_one_epoch
+    for images, text in data_loader:
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 628, in __next__
+    data = self._next_data()
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1333, in _next_data
+    return self._process_data(data)
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1359, in _process_data
+    data.reraise()
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/_utils.py", line 543, in reraise
+    raise exception
+AssertionError: Caught AssertionError in DataLoader worker process 8.
+Original Traceback (most recent call last):
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/utils/data/_utils/worker.py", line 302, in _worker_loop
+    data = fetcher.fetch(index)
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/utils/data/_utils/fetch.py", line 58, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/utils/data/_utils/fetch.py", line 58, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/temp/Desktop/KD/CLIPPO/dataset.py", line 39, in __getitem__
+    image = Image.open(image).convert('RGB')
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/PIL/Image.py", line 3270, in open
+    im = _open_core(fp, filename, prefix, formats)
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/PIL/Image.py", line 3257, in _open_core
+    _decompression_bomb_check(im.size)
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/PIL/Image.py", line 3173, in _decompression_bomb_check
+    raise AssertionError
+AssertionError

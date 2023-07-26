@@ -1,0 +1,31 @@
+Data loaded: there are 16 images.
+model and optimizer are ready.
+Starting clippo training !
+Error in sys.excepthook:
+Traceback (most recent call last):
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/wandb/sdk/lib/exit_hooks.py", line 42, in exc_handler
+    def exc_handler(
+KeyboardInterrupt
+Original exception was:
+Traceback (most recent call last):
+  File "/home/temp/Desktop/KD/CLIPPO/train.py", line 157, in <module>
+    args = parser.parse_args()
+  File "/home/temp/Desktop/KD/CLIPPO/train.py", line 110, in main
+    loss = train_one_epoch(clippo, data_loader, optimizer,
+  File "/home/temp/Desktop/KD/CLIPPO/train.py", line 17, in train_one_epoch
+    for images, text in data_loader:
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 628, in __next__
+    data = self._next_data()
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1305, in _next_data
+    self._shutdown_workers()
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1430, in _shutdown_workers
+    w.join(timeout=_utils.MP_STATUS_CHECK_INTERVAL)
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/multiprocessing/process.py", line 149, in join
+    res = self._popen.wait(timeout)
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/multiprocessing/popen_fork.py", line 40, in wait
+    if not wait([self.sentinel], timeout):
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/selectors.py", line 416, in select
+    fd_event_list = self._selector.poll(timeout)
+KeyboardInterrupt

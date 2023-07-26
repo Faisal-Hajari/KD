@@ -1,0 +1,676 @@
+2023-07-26 07:59:31,887 INFO    StreamThr :513696 [internal.py:wandb_internal():86] W&B internal server running at pid: 513696, started at: 2023-07-26 07:59:31.887295
+2023-07-26 07:59:31,889 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: status
+2023-07-26 07:59:31,891 INFO    WriterThread:513696 [datastore.py:open_for_write():85] open: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/run-lssyqgsr.wandb
+2023-07-26 07:59:31,891 DEBUG   SenderThread:513696 [sender.py:send():375] send: header
+2023-07-26 07:59:31,930 DEBUG   SenderThread:513696 [sender.py:send():375] send: run
+2023-07-26 07:59:32,731 INFO    SenderThread:513696 [dir_watcher.py:__init__():219] watching files in: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files
+2023-07-26 07:59:32,731 INFO    SenderThread:513696 [sender.py:_start_run_threads():1124] run started: lssyqgsr with start time 1690347571.886106
+2023-07-26 07:59:32,731 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 07:59:32,731 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 07:59:32,734 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: check_version
+2023-07-26 07:59:32,735 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: check_version
+2023-07-26 07:59:33,113 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: run_start
+2023-07-26 07:59:33,120 DEBUG   HandlerThread:513696 [system_info.py:__init__():31] System info init
+2023-07-26 07:59:33,120 DEBUG   HandlerThread:513696 [system_info.py:__init__():46] System info init done
+2023-07-26 07:59:33,120 INFO    HandlerThread:513696 [system_monitor.py:start():181] Starting system monitor
+2023-07-26 07:59:33,121 INFO    SystemMonitor:513696 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2023-07-26 07:59:33,121 INFO    HandlerThread:513696 [system_monitor.py:probe():201] Collecting system info
+2023-07-26 07:59:33,122 INFO    SystemMonitor:513696 [interfaces.py:start():190] Started cpu monitoring
+2023-07-26 07:59:33,122 INFO    SystemMonitor:513696 [interfaces.py:start():190] Started disk monitoring
+2023-07-26 07:59:33,123 INFO    SystemMonitor:513696 [interfaces.py:start():190] Started gpu monitoring
+2023-07-26 07:59:33,124 INFO    SystemMonitor:513696 [interfaces.py:start():190] Started memory monitoring
+2023-07-26 07:59:33,125 INFO    SystemMonitor:513696 [interfaces.py:start():190] Started network monitoring
+2023-07-26 07:59:33,161 DEBUG   HandlerThread:513696 [system_info.py:probe():195] Probing system
+2023-07-26 07:59:33,167 DEBUG   HandlerThread:513696 [system_info.py:_probe_git():180] Probing git
+2023-07-26 07:59:33,182 DEBUG   HandlerThread:513696 [system_info.py:_probe_git():188] Probing git done
+2023-07-26 07:59:33,182 DEBUG   HandlerThread:513696 [system_info.py:probe():240] Probing system done
+2023-07-26 07:59:33,182 DEBUG   HandlerThread:513696 [system_monitor.py:probe():210] {'os': 'Linux-5.15.0-78-generic-x86_64-with-glibc2.31', 'python': '3.9.16', 'heartbeatAt': '2023-07-26T04:59:33.161706', 'startedAt': '2023-07-26T04:59:31.879424', 'docker': None, 'cuda': None, 'args': ('--local_rank=0', '--batch_size', '4'), 'state': 'running', 'program': '/home/temp/Desktop/KD/CLIPPO/train.py', 'codePath': 'CLIPPO/train.py', 'git': {'remote': 'https://github.com/Faisal-Hajari/KD.git', 'commit': '7bd78f0431f6428fd308a61b14f8d2abbf23d800'}, 'email': 'faisalhejary@gmail.com', 'root': '/home/temp/Desktop/KD', 'host': 'NCAI-TE-8', 'username': 'faisal', 'executable': '/home/temp/miniconda3/envs/stanford_env/bin/python', 'cpu_count': 32, 'cpu_count_logical': 64, 'cpu_freq': {'current': 2.351328125, 'min': 2200.0, 'max': 3500.0}, 'cpu_freq_per_core': [{'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 3.5, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 4.128, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 4.126, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 3.5, 'min': 2200.0, 'max': 3500.0}, {'current': 1.978, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.4, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.4, 'min': 2200.0, 'max': 3500.0}, {'current': 4.13, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.4, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 3.5, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.4, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.4, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}], 'disk': {'total': 1832.2072448730469, 'used': 940.9178657531738}, 'gpu': 'NVIDIA RTX A5000', 'gpu_count': 4, 'gpu_devices': [{'name': 'NVIDIA RTX A5000', 'memory_total': 25757220864}, {'name': 'NVIDIA RTX A5000', 'memory_total': 25757220864}, {'name': 'NVIDIA RTX A5000', 'memory_total': 25757220864}, {'name': 'NVIDIA RTX A5000', 'memory_total': 25757220864}], 'memory': {'total': 251.51410293579102}}
+2023-07-26 07:59:33,182 INFO    HandlerThread:513696 [system_monitor.py:probe():211] Finished collecting system info
+2023-07-26 07:59:33,182 INFO    HandlerThread:513696 [system_monitor.py:probe():214] Publishing system info
+2023-07-26 07:59:33,182 DEBUG   HandlerThread:513696 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2023-07-26 07:59:33,183 DEBUG   HandlerThread:513696 [system_info.py:_save_pip():67] Saving pip packages done
+2023-07-26 07:59:33,183 DEBUG   HandlerThread:513696 [system_info.py:_save_conda():74] Saving list of conda packages installed into the current environment
+2023-07-26 07:59:33,733 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_created():278] file/dir created: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/requirements.txt
+2023-07-26 07:59:33,733 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_created():278] file/dir created: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 07:59:33,733 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_created():278] file/dir created: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/conda-environment.yaml
+2023-07-26 07:59:36,387 DEBUG   HandlerThread:513696 [system_info.py:_save_conda():86] Saving conda packages done
+2023-07-26 07:59:36,388 INFO    HandlerThread:513696 [system_monitor.py:probe():216] Finished publishing system info
+2023-07-26 07:59:36,393 DEBUG   SenderThread:513696 [sender.py:send():375] send: files
+2023-07-26 07:59:36,394 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-metadata.json with policy now
+2023-07-26 07:59:36,401 DEBUG   SenderThread:513696 [sender.py:send():375] send: telemetry
+2023-07-26 07:59:36,401 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: stop_status
+2023-07-26 07:59:36,401 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: stop_status
+2023-07-26 07:59:36,735 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/conda-environment.yaml
+2023-07-26 07:59:36,735 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_created():278] file/dir created: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-metadata.json
+2023-07-26 07:59:37,116 INFO    wandb-upload_0:513696 [upload_job.py:push():137] Uploaded file /tmp/tmpp2twssykwandb/u9qz4tek-wandb-metadata.json
+2023-07-26 07:59:37,889 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: status_report
+2023-07-26 07:59:42,890 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: status_report
+2023-07-26 07:59:45,737 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_created():278] file/dir created: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/output.log
+2023-07-26 07:59:47,738 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/output.log
+2023-07-26 07:59:48,219 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 07:59:48,220 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 07:59:48,221 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 07:59:48,221 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: status_report
+2023-07-26 07:59:48,221 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 07:59:48,738 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 07:59:48,984 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 07:59:48,985 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 07:59:48,985 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 07:59:48,985 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 07:59:49,739 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 07:59:49,740 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 07:59:49,740 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 07:59:49,740 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 07:59:49,742 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 07:59:50,617 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 07:59:50,618 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 07:59:50,618 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 07:59:50,618 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 07:59:50,740 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 07:59:51,300 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 07:59:51,301 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 07:59:51,301 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 07:59:51,301 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 07:59:51,473 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: stop_status
+2023-07-26 07:59:51,473 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: stop_status
+2023-07-26 07:59:51,740 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 07:59:51,979 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 07:59:51,979 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 07:59:51,980 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 07:59:51,982 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 07:59:52,687 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 07:59:52,688 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 07:59:52,688 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 07:59:52,688 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 07:59:52,741 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 07:59:53,374 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 07:59:53,374 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 07:59:53,375 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 07:59:53,375 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: status_report
+2023-07-26 07:59:53,375 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 07:59:53,741 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 07:59:54,074 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 07:59:54,075 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 07:59:54,075 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 07:59:54,076 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 07:59:54,741 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 07:59:54,794 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 07:59:54,795 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 07:59:54,795 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 07:59:54,795 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 07:59:55,487 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 07:59:55,488 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 07:59:55,488 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 07:59:55,489 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 07:59:55,741 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 07:59:56,177 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 07:59:56,178 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 07:59:56,178 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 07:59:56,180 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 07:59:56,742 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 07:59:56,852 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 07:59:56,852 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 07:59:56,852 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 07:59:56,853 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 07:59:57,556 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 07:59:57,557 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 07:59:57,557 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 07:59:57,558 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 07:59:57,742 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 07:59:58,251 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 07:59:58,252 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 07:59:58,252 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 07:59:58,253 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 07:59:58,742 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 07:59:58,939 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 07:59:58,940 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 07:59:58,940 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 07:59:58,940 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: status_report
+2023-07-26 07:59:58,940 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 07:59:59,626 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 07:59:59,626 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 07:59:59,627 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 07:59:59,627 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 07:59:59,743 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:00,321 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:00,322 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:00,322 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:00,323 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:00,743 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:01,002 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:01,002 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:01,003 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:01,003 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:01,690 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:01,690 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:01,691 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:01,691 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:01,743 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:02,391 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:02,391 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:02,392 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:02,393 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:02,744 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:03,089 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:03,090 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:03,090 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:03,090 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:03,744 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:03,778 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:03,779 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:03,779 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:03,779 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:04,483 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:04,484 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:04,491 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: status_report
+2023-07-26 08:00:04,737 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:04,738 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:04,744 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:04,744 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/config.yaml
+2023-07-26 08:00:05,150 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:05,151 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:05,151 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:05,152 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:05,745 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:05,836 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:05,836 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:05,836 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:05,837 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:06,432 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: stop_status
+2023-07-26 08:00:06,432 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: stop_status
+2023-07-26 08:00:06,519 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:06,710 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:06,711 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:06,712 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:06,745 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:07,211 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:07,211 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:07,211 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:07,212 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:07,745 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:07,907 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:07,908 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:07,908 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:07,908 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:08,600 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:08,601 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:08,601 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:08,601 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:08,745 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:09,316 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:09,317 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:09,317 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:09,318 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:09,746 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:09,993 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:09,994 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:09,995 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:09,995 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: status_report
+2023-07-26 08:00:09,995 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:10,682 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:10,683 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:10,683 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:10,683 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:10,746 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:11,363 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:11,364 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:11,364 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:11,366 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:11,746 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:12,039 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:12,040 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:12,040 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:12,041 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:12,723 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:12,724 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:12,724 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:12,724 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:12,747 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:13,431 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:13,432 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:13,432 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:13,434 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:13,747 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:14,122 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:14,123 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:14,123 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:14,123 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:14,747 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:14,814 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:14,815 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:14,815 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:14,815 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:15,519 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:15,519 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:15,520 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:15,520 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: status_report
+2023-07-26 08:00:15,521 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:15,747 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:16,214 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:16,215 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:16,215 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:16,215 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:16,748 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:16,889 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:16,890 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:16,890 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:16,891 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:17,573 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:17,574 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:17,574 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:17,576 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:17,748 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:18,261 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:18,262 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:18,262 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:18,263 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:18,748 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:18,941 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:18,942 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:18,942 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:18,942 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:19,629 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:19,629 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:19,630 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:19,631 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:19,749 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:20,313 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:20,314 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:20,314 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:20,314 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:20,749 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:21,009 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:21,009 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:21,010 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:21,010 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: status_report
+2023-07-26 08:00:21,010 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:21,442 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: stop_status
+2023-07-26 08:00:21,443 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: stop_status
+2023-07-26 08:00:21,701 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:21,702 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:21,702 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:21,703 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:21,749 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:22,412 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:22,412 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:22,413 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:22,413 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:22,750 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:23,105 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:23,106 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:23,106 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:23,107 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:23,750 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:23,780 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:23,781 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:23,781 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:23,782 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:24,446 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:24,447 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:24,447 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:24,447 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:24,750 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:25,122 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:25,123 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:25,123 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:25,123 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:25,750 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:25,791 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:25,792 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:25,792 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:25,794 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:26,492 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:26,493 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:26,493 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:26,493 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: status_report
+2023-07-26 08:00:26,493 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:26,751 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:27,180 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:27,181 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:27,181 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:27,181 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:27,751 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:27,871 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:27,872 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:27,872 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:27,874 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:28,597 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:28,597 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:28,597 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:28,598 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:28,752 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:29,290 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:29,291 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:29,291 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:29,291 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:29,752 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:29,959 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:29,960 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:29,960 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:29,962 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:30,621 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:30,622 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:30,622 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:30,622 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:30,752 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:31,306 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:31,306 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:31,306 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:31,307 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:31,752 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:31,985 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:31,986 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:31,986 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:31,986 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: status_report
+2023-07-26 08:00:31,986 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:32,678 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:32,678 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:32,679 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:32,679 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:32,752 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:33,126 DEBUG   SystemMonitor:513696 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2023-07-26 08:00:33,128 DEBUG   SenderThread:513696 [sender.py:send():375] send: stats
+2023-07-26 08:00:33,356 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:33,356 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:33,356 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:33,357 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:33,753 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:34,054 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:34,055 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:34,055 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:34,055 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:34,747 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:34,747 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:34,748 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:34,748 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:34,753 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:35,457 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:35,458 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:35,458 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:35,458 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:35,753 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:36,152 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:36,153 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:36,153 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:36,153 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:36,446 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: stop_status
+2023-07-26 08:00:36,447 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: stop_status
+2023-07-26 08:00:36,754 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:36,850 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:36,851 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:36,851 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:36,852 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:37,554 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:37,554 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:37,555 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:37,555 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: status_report
+2023-07-26 08:00:37,555 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:37,754 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:38,246 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:38,246 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:38,246 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:38,246 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:38,754 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:38,928 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:38,929 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:38,929 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:38,929 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:39,619 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:39,619 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:39,619 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:39,620 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:39,755 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:40,325 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:40,325 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:40,326 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:40,327 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:40,755 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:41,020 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:41,021 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:41,021 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:41,021 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:41,710 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:41,711 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:41,711 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:41,712 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:41,755 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:42,412 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:42,413 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:42,414 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:42,414 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:42,755 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:43,098 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:43,099 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:43,099 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:43,099 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: status_report
+2023-07-26 08:00:43,099 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:43,756 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:43,773 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:43,774 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:43,775 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:43,775 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:44,426 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:44,426 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:44,426 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:44,427 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:44,756 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:45,090 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:45,090 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:45,091 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:45,091 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:45,744 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:45,745 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:45,745 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:45,745 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:45,756 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:46,388 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:46,389 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:46,389 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:46,389 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:46,756 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:47,035 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:47,036 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:47,036 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:47,036 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:47,682 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:47,683 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:47,683 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:47,684 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:47,757 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:48,330 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:48,330 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:48,331 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:48,331 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: status_report
+2023-07-26 08:00:48,331 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:48,757 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:48,977 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:48,977 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:48,978 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:48,978 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:49,615 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:49,616 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:49,616 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:49,616 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:49,758 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:50,265 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:50,266 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:50,266 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:50,266 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:50,758 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:50,901 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:50,902 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:50,902 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:50,904 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:51,447 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: stop_status
+2023-07-26 08:00:51,447 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: stop_status
+2023-07-26 08:00:51,538 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:51,728 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:51,728 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:51,729 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:51,758 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:52,171 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:52,172 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:52,172 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:52,173 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:52,758 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:52,807 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:52,808 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:52,808 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:52,808 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:53,449 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:53,449 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:53,450 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:53,450 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: status_report
+2023-07-26 08:00:53,451 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:53,759 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:54,080 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:54,081 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:54,081 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:54,081 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:54,720 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:54,721 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:54,721 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:54,721 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:54,759 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:55,359 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:55,360 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:55,360 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:55,360 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:55,759 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:56,001 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-26 08:00:56,002 DEBUG   SenderThread:513696 [sender.py:send():375] send: history
+2023-07-26 08:00:56,002 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: summary_record
+2023-07-26 08:00:56,003 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:56,337 DEBUG   SenderThread:513696 [sender.py:send():375] send: exit
+2023-07-26 08:00:56,337 INFO    SenderThread:513696 [sender.py:send_exit():598] handling exit code: 0
+2023-07-26 08:00:56,337 INFO    SenderThread:513696 [sender.py:send_exit():600] handling runtime: 83
+2023-07-26 08:00:56,338 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:56,338 INFO    SenderThread:513696 [sender.py:send_exit():606] send defer
+2023-07-26 08:00:56,338 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: defer
+2023-07-26 08:00:56,338 INFO    HandlerThread:513696 [handler.py:handle_request_defer():170] handle defer: 0
+2023-07-26 08:00:56,338 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: defer
+2023-07-26 08:00:56,338 INFO    SenderThread:513696 [sender.py:send_request_defer():622] handle sender defer: 0
+2023-07-26 08:00:56,338 INFO    SenderThread:513696 [sender.py:transition_state():626] send defer: 1
+2023-07-26 08:00:56,339 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: defer
+2023-07-26 08:00:56,339 INFO    HandlerThread:513696 [handler.py:handle_request_defer():170] handle defer: 1
+2023-07-26 08:00:56,339 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: defer
+2023-07-26 08:00:56,339 INFO    SenderThread:513696 [sender.py:send_request_defer():622] handle sender defer: 1
+2023-07-26 08:00:56,339 INFO    SenderThread:513696 [sender.py:transition_state():626] send defer: 2
+2023-07-26 08:00:56,339 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: defer
+2023-07-26 08:00:56,339 INFO    HandlerThread:513696 [handler.py:handle_request_defer():170] handle defer: 2
+2023-07-26 08:00:56,339 INFO    HandlerThread:513696 [system_monitor.py:finish():190] Stopping system monitor
+2023-07-26 08:00:56,339 DEBUG   SystemMonitor:513696 [system_monitor.py:_start():166] Finished system metrics aggregation loop
+2023-07-26 08:00:56,340 DEBUG   SystemMonitor:513696 [system_monitor.py:_start():170] Publishing last batch of metrics
+2023-07-26 08:00:56,340 INFO    HandlerThread:513696 [interfaces.py:finish():202] Joined cpu monitor
+2023-07-26 08:00:56,342 INFO    HandlerThread:513696 [interfaces.py:finish():202] Joined disk monitor
+2023-07-26 08:00:56,561 INFO    HandlerThread:513696 [interfaces.py:finish():202] Joined gpu monitor
+2023-07-26 08:00:56,562 INFO    HandlerThread:513696 [interfaces.py:finish():202] Joined memory monitor
+2023-07-26 08:00:56,562 INFO    HandlerThread:513696 [interfaces.py:finish():202] Joined network monitor
+2023-07-26 08:00:56,563 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: defer
+2023-07-26 08:00:56,563 INFO    SenderThread:513696 [sender.py:send_request_defer():622] handle sender defer: 2
+2023-07-26 08:00:56,563 INFO    SenderThread:513696 [sender.py:transition_state():626] send defer: 3
+2023-07-26 08:00:56,563 DEBUG   SenderThread:513696 [sender.py:send():375] send: stats
+2023-07-26 08:00:56,564 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: defer
+2023-07-26 08:00:56,564 INFO    HandlerThread:513696 [handler.py:handle_request_defer():170] handle defer: 3
+2023-07-26 08:00:56,564 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: defer
+2023-07-26 08:00:56,564 INFO    SenderThread:513696 [sender.py:send_request_defer():622] handle sender defer: 3
+2023-07-26 08:00:56,564 INFO    SenderThread:513696 [sender.py:transition_state():626] send defer: 4
+2023-07-26 08:00:56,564 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: defer
+2023-07-26 08:00:56,564 INFO    HandlerThread:513696 [handler.py:handle_request_defer():170] handle defer: 4
+2023-07-26 08:00:56,565 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: defer
+2023-07-26 08:00:56,565 INFO    SenderThread:513696 [sender.py:send_request_defer():622] handle sender defer: 4
+2023-07-26 08:00:56,565 INFO    SenderThread:513696 [sender.py:transition_state():626] send defer: 5
+2023-07-26 08:00:56,565 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: defer
+2023-07-26 08:00:56,565 INFO    HandlerThread:513696 [handler.py:handle_request_defer():170] handle defer: 5
+2023-07-26 08:00:56,565 DEBUG   SenderThread:513696 [sender.py:send():375] send: summary
+2023-07-26 08:00:56,566 INFO    SenderThread:513696 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-26 08:00:56,566 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: defer
+2023-07-26 08:00:56,566 INFO    SenderThread:513696 [sender.py:send_request_defer():622] handle sender defer: 5
+2023-07-26 08:00:56,566 INFO    SenderThread:513696 [sender.py:transition_state():626] send defer: 6
+2023-07-26 08:00:56,566 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: defer
+2023-07-26 08:00:56,566 INFO    HandlerThread:513696 [handler.py:handle_request_defer():170] handle defer: 6
+2023-07-26 08:00:56,566 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: defer
+2023-07-26 08:00:56,566 INFO    SenderThread:513696 [sender.py:send_request_defer():622] handle sender defer: 6
+2023-07-26 08:00:56,566 INFO    SenderThread:513696 [sender.py:transition_state():626] send defer: 7
+2023-07-26 08:00:56,567 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: status_report
+2023-07-26 08:00:56,567 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: defer
+2023-07-26 08:00:56,567 INFO    HandlerThread:513696 [handler.py:handle_request_defer():170] handle defer: 7
+2023-07-26 08:00:56,567 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: defer
+2023-07-26 08:00:56,567 INFO    SenderThread:513696 [sender.py:send_request_defer():622] handle sender defer: 7
+2023-07-26 08:00:56,759 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:00:57,337 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: poll_exit
+2023-07-26 08:00:57,447 INFO    SenderThread:513696 [sender.py:transition_state():626] send defer: 8
+2023-07-26 08:00:57,447 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: poll_exit
+2023-07-26 08:00:57,448 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: defer
+2023-07-26 08:00:57,448 INFO    HandlerThread:513696 [handler.py:handle_request_defer():170] handle defer: 8
+2023-07-26 08:00:57,448 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: defer
+2023-07-26 08:00:57,448 INFO    SenderThread:513696 [sender.py:send_request_defer():622] handle sender defer: 8
+2023-07-26 08:00:57,452 INFO    SenderThread:513696 [sender.py:transition_state():626] send defer: 9
+2023-07-26 08:00:57,453 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: defer
+2023-07-26 08:00:57,453 DEBUG   SenderThread:513696 [sender.py:send():375] send: artifact
+2023-07-26 08:00:57,453 INFO    HandlerThread:513696 [handler.py:handle_request_defer():170] handle defer: 9
+2023-07-26 08:00:57,760 INFO    Thread-12 :513696 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/output.log
+2023-07-26 08:00:58,338 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: poll_exit
+2023-07-26 08:00:58,807 INFO    wandb-upload_0:513696 [upload_job.py:push():92] Skipped uploading /home/temp/.local/share/wandb/artifacts/staging/tmp_zz9vmuw
+2023-07-26 08:00:59,353 INFO    wandb-upload_1:513696 [upload_job.py:push():95] Uploaded file /home/temp/.local/share/wandb/artifacts/staging/tmpej8j44wr
+2023-07-26 08:01:01,287 INFO    SenderThread:513696 [sender.py:send_artifact():1474] sent artifact job-https___github.com_Faisal-Hajari_KD.git_CLIPPO_train.py - {'id': 'QXJ0aWZhY3Q6NTIzMjk3NTM4', 'digest': 'a084fd57c6789937dcda29c1b4bf74f2', 'state': 'PENDING', 'aliases': [], 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjg1NjgyMDYx', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6NTIzMjkyOTYy', 'versionIndex': 3}}, 'version': 'latest'}
+2023-07-26 08:01:01,287 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: defer
+2023-07-26 08:01:01,287 INFO    SenderThread:513696 [sender.py:send_request_defer():622] handle sender defer: 9
+2023-07-26 08:01:01,287 INFO    SenderThread:513696 [dir_watcher.py:finish():365] shutting down directory watcher
+2023-07-26 08:01:01,763 INFO    SenderThread:513696 [dir_watcher.py:finish():395] scan: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files
+2023-07-26 08:01:01,763 INFO    SenderThread:513696 [dir_watcher.py:finish():409] scan save: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/config.yaml config.yaml
+2023-07-26 08:01:01,763 INFO    SenderThread:513696 [dir_watcher.py:finish():409] scan save: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/conda-environment.yaml conda-environment.yaml
+2023-07-26 08:01:01,763 INFO    SenderThread:513696 [dir_watcher.py:finish():409] scan save: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-metadata.json wandb-metadata.json
+2023-07-26 08:01:01,763 INFO    SenderThread:513696 [dir_watcher.py:finish():409] scan save: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/output.log output.log
+2023-07-26 08:01:01,763 INFO    SenderThread:513696 [dir_watcher.py:finish():409] scan save: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/requirements.txt requirements.txt
+2023-07-26 08:01:01,764 INFO    SenderThread:513696 [dir_watcher.py:finish():409] scan save: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json wandb-summary.json
+2023-07-26 08:01:01,767 INFO    SenderThread:513696 [sender.py:transition_state():626] send defer: 10
+2023-07-26 08:01:01,767 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: poll_exit
+2023-07-26 08:01:01,771 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: defer
+2023-07-26 08:01:01,771 INFO    HandlerThread:513696 [handler.py:handle_request_defer():170] handle defer: 10
+2023-07-26 08:01:01,771 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: defer
+2023-07-26 08:01:01,771 INFO    SenderThread:513696 [sender.py:send_request_defer():622] handle sender defer: 10
+2023-07-26 08:01:01,771 INFO    SenderThread:513696 [file_pusher.py:finish():168] shutting down file pusher
+2023-07-26 08:01:02,395 INFO    wandb-upload_0:513696 [upload_job.py:push():137] Uploaded file /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/config.yaml
+2023-07-26 08:01:02,748 INFO    wandb-upload_1:513696 [upload_job.py:push():137] Uploaded file /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/conda-environment.yaml
+2023-07-26 08:01:02,781 INFO    wandb-upload_2:513696 [upload_job.py:push():137] Uploaded file /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/output.log
+2023-07-26 08:01:02,790 INFO    wandb-upload_3:513696 [upload_job.py:push():137] Uploaded file /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/requirements.txt
+2023-07-26 08:01:02,806 INFO    wandb-upload_4:513696 [upload_job.py:push():137] Uploaded file /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/files/wandb-summary.json
+2023-07-26 08:01:03,007 INFO    Thread-11 :513696 [sender.py:transition_state():626] send defer: 11
+2023-07-26 08:01:03,007 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: defer
+2023-07-26 08:01:03,007 INFO    HandlerThread:513696 [handler.py:handle_request_defer():170] handle defer: 11
+2023-07-26 08:01:03,007 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: defer
+2023-07-26 08:01:03,008 INFO    SenderThread:513696 [sender.py:send_request_defer():622] handle sender defer: 11
+2023-07-26 08:01:03,008 INFO    SenderThread:513696 [file_pusher.py:join():173] waiting for file pusher
+2023-07-26 08:01:03,008 INFO    SenderThread:513696 [sender.py:transition_state():626] send defer: 12
+2023-07-26 08:01:03,008 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: defer
+2023-07-26 08:01:03,008 INFO    HandlerThread:513696 [handler.py:handle_request_defer():170] handle defer: 12
+2023-07-26 08:01:03,008 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: defer
+2023-07-26 08:01:03,008 INFO    SenderThread:513696 [sender.py:send_request_defer():622] handle sender defer: 12
+2023-07-26 08:01:03,246 INFO    SenderThread:513696 [sender.py:transition_state():626] send defer: 13
+2023-07-26 08:01:03,246 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: defer
+2023-07-26 08:01:03,247 INFO    HandlerThread:513696 [handler.py:handle_request_defer():170] handle defer: 13
+2023-07-26 08:01:03,247 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: defer
+2023-07-26 08:01:03,247 INFO    SenderThread:513696 [sender.py:send_request_defer():622] handle sender defer: 13
+2023-07-26 08:01:03,247 INFO    SenderThread:513696 [sender.py:transition_state():626] send defer: 14
+2023-07-26 08:01:03,247 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: defer
+2023-07-26 08:01:03,247 INFO    HandlerThread:513696 [handler.py:handle_request_defer():170] handle defer: 14
+2023-07-26 08:01:03,248 DEBUG   SenderThread:513696 [sender.py:send():375] send: final
+2023-07-26 08:01:03,248 DEBUG   SenderThread:513696 [sender.py:send():375] send: footer
+2023-07-26 08:01:03,248 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: defer
+2023-07-26 08:01:03,248 INFO    SenderThread:513696 [sender.py:send_request_defer():622] handle sender defer: 14
+2023-07-26 08:01:03,249 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: poll_exit
+2023-07-26 08:01:03,249 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: poll_exit
+2023-07-26 08:01:03,249 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: server_info
+2023-07-26 08:01:03,250 DEBUG   SenderThread:513696 [sender.py:send_request():402] send_request: server_info
+2023-07-26 08:01:03,252 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: get_summary
+2023-07-26 08:01:03,252 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: sampled_history
+2023-07-26 08:01:03,475 INFO    MainThread:513696 [wandb_run.py:_footer_history_summary_info():3476] rendering history
+2023-07-26 08:01:03,475 INFO    MainThread:513696 [wandb_run.py:_footer_history_summary_info():3508] rendering summary
+2023-07-26 08:01:03,476 INFO    MainThread:513696 [wandb_run.py:_footer_sync_info():3434] logging synced files
+2023-07-26 08:01:03,476 DEBUG   HandlerThread:513696 [handler.py:handle_request():144] handle_request: shutdown
+2023-07-26 08:01:03,476 INFO    HandlerThread:513696 [handler.py:finish():845] shutting down handler
+2023-07-26 08:01:04,250 INFO    WriterThread:513696 [datastore.py:close():298] close: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_075931-lssyqgsr/run-lssyqgsr.wandb
+2023-07-26 08:01:04,475 INFO    SenderThread:513696 [sender.py:finish():1550] shutting down sender
+2023-07-26 08:01:04,475 INFO    SenderThread:513696 [file_pusher.py:finish():168] shutting down file pusher
+2023-07-26 08:01:04,475 INFO    SenderThread:513696 [file_pusher.py:join():173] waiting for file pusher

@@ -1,0 +1,26 @@
+2023-07-26 10:51:20,969 INFO    MainThread:783647 [wandb_setup.py:_flush():76] Configure stats pid to 783647
+2023-07-26 10:51:20,969 INFO    MainThread:783647 [wandb_setup.py:_flush():76] Loading settings from /home/temp/.config/wandb/settings
+2023-07-26 10:51:20,969 INFO    MainThread:783647 [wandb_setup.py:_flush():76] Loading settings from /home/temp/Desktop/KD/CLIPPO/wandb/settings
+2023-07-26 10:51:20,969 INFO    MainThread:783647 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2023-07-26 10:51:20,969 INFO    MainThread:783647 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2023-07-26 10:51:20,969 INFO    MainThread:783647 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'CLIPPO/train.py', 'program': '/home/temp/Desktop/KD/CLIPPO/train.py'}
+2023-07-26 10:51:20,969 INFO    MainThread:783647 [wandb_init.py:_log_setup():507] Logging user logs to /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_105120-vx9n08pe/logs/debug.log
+2023-07-26 10:51:20,969 INFO    MainThread:783647 [wandb_init.py:_log_setup():508] Logging internal logs to /home/temp/Desktop/KD/CLIPPO/wandb/run-20230726_105120-vx9n08pe/logs/debug-internal.log
+2023-07-26 10:51:20,970 INFO    MainThread:783647 [wandb_init.py:init():547] calling init triggers
+2023-07-26 10:51:20,970 INFO    MainThread:783647 [wandb_init.py:init():554] wandb.init called with sweep_config: {}
+config: {'learning_rate': 0.00078125, 'architecture': 'CLIPPO', 'dataset': 'CC3M_test', 'epochs': 50}
+2023-07-26 10:51:20,970 INFO    MainThread:783647 [wandb_init.py:init():595] starting backend
+2023-07-26 10:51:20,970 INFO    MainThread:783647 [wandb_init.py:init():599] setting up manager
+2023-07-26 10:51:20,972 INFO    MainThread:783647 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2023-07-26 10:51:20,973 INFO    MainThread:783647 [wandb_init.py:init():605] backend started and connected
+2023-07-26 10:51:20,975 INFO    MainThread:783647 [wandb_init.py:init():695] updated telemetry
+2023-07-26 10:51:21,030 INFO    MainThread:783647 [wandb_init.py:init():732] communicating run to backend with 60.0 second timeout
+2023-07-26 10:51:22,060 INFO    MainThread:783647 [wandb_run.py:_on_init():2176] communicating current version
+2023-07-26 10:51:22,422 INFO    MainThread:783647 [wandb_run.py:_on_init():2185] got version response upgrade_message: "wandb version 0.15.7 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2023-07-26 10:51:22,422 INFO    MainThread:783647 [wandb_init.py:init():782] starting run threads in backend
+2023-07-26 10:51:25,715 INFO    MainThread:783647 [wandb_run.py:_console_start():2157] atexit reg
+2023-07-26 10:51:25,715 INFO    MainThread:783647 [wandb_run.py:_redirect():2012] redirect: SettingsConsole.WRAP_RAW
+2023-07-26 10:51:25,715 INFO    MainThread:783647 [wandb_run.py:_redirect():2077] Wrapping output streams.
+2023-07-26 10:51:25,715 INFO    MainThread:783647 [wandb_run.py:_redirect():2102] Redirects installed.
+2023-07-26 10:51:25,716 INFO    MainThread:783647 [wandb_init.py:init():824] run started, returning control to user process
