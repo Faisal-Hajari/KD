@@ -2,26 +2,30 @@ import torch
 from torch import nn 
 from torch.nn import functional as F
 import timm 
+import numpy as np
 
 class CLIPPO(nn.Module): 
-    def __init__(self, temp): 
+    def __init__(self): 
         super(CLIPPO, self).__init__()
         self.encoder = timm.create_model('vit_base_patch16_224', num_classes=0)
-        self.temp =  temp
+        self.logit_scale = nn.Parameter(torch.ones([]) * np.log(1 / 0.07))
 
     def forward(self, image, text): 
         image_features = self.encoder(image)
         text_features = self.encoder(text)
-        logits = (text_features @ image_features.T) / self.temp
-        images_similarity = image_features @ image_features.T
-        texts_similarity = text_features @ text_features.T
-        targets = F.softmax(
-            (images_similarity + texts_similarity) / 2 * self.temp, dim=-1
-        )
-        texts_loss = cross_entropy(logits, targets, reduction='none')
-        images_loss = cross_entropy(logits.T, targets.T, reduction='none')
-        loss =  (images_loss + texts_loss) / 2.0 # shape: (batch_size)
-        return loss.mean()
+        
+        # normalized features
+        image_features = image_features / image_features.norm(dim=1, keepdim=True)
+        text_features = text_features / text_features.norm(dim=1, keepdim=True)
+
+        # cosine similarity as logits
+        logit_scale = self.logit_scale.exp()
+        logits_per_image = logit_scale * image_features @ text_features.t()
+        logits_per_text = logits_per_image.t()
+
+        # shape = [global_batch_size, global_batch_size]
+        return logits_per_image, logits_per_text
+    
 
 def cross_entropy(preds, targets, reduction='none'):
     log_softmax = nn.LogSoftmax(dim=-1)

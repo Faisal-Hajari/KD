@@ -13,35 +13,42 @@ from dataset import CC3M
 from network import CLIPPO
 
 def train_one_epoch(clippo, data_loader, optimizer, lr_schedule, epoch, fp16_scaler, args): 
-    total_loss = 0.0
+    loss_img = nn.CrossEntropyLoss()
+    loss_txt = nn.CrossEntropyLoss()
+
     for images, text in data_loader: 
         with torch.cuda.amp.autocast(fp16_scaler is not None):
             images = images.cuda() 
             text = text.cuda() 
-            loss = clippo(image=images, text=text)
+            #TODO: add discoCLip here. 
+            logits_per_image, logits_per_text = clippo(image=images, text=text)
+            
+            ground_truth = torch.arange(len(images),dtype=torch.long).cuda()
+
+            total_loss = (loss_img(logits_per_image,ground_truth) + loss_txt(logits_per_text,ground_truth))/2
+            total_loss.backward(retain_graph=True)
             if utils.get_rank() == 0:
-                wandb.log({"mini_batch_loss": loss.item()})
+                wandb.log({"mini_batch_loss": total_loss.item()})
 
 
-        if not math.isfinite(loss.item()):
-            print("Loss is {}, stopping training".format(loss.item()), force=True)
+        if not math.isfinite(total_loss.item()):
+            print("Loss is {}, stopping training".format(total_loss.item()), force=True)
             sys.exit(1)    
         
         optimizer.zero_grad()
         if fp16_scaler is None:
-            loss.backward()
+            total_loss.backward()
             if args.clip_grad:
                 param_norms = utils.clip_gradients(clippo, args.clip_grad)
             optimizer.step()
         else: 
-            fp16_scaler.scale(loss).backward()
+            fp16_scaler.scale(total_loss).backward()
             if args.clip_grad:
                 fp16_scaler.unscale_(optimizer)  # unscale the gradients of optimizer's assigned params in-place
                 param_norms = utils.clip_gradients(clippo, args.clip_grad)
             fp16_scaler.step(optimizer)
             fp16_scaler.update()
-        total_loss += loss.item()
-    
+
         if utils.get_rank() == 0:
             torch.save(clippo.state_dict(), 'clippo.pt')
     # print(loss)
@@ -84,7 +91,7 @@ def main(args):
         drop_last=True,
     )
     print(f"Data loaded: there are {len(dataset)} images.")
-    clippo = CLIPPO(1)
+    clippo = CLIPPO()
     clippo = clippo.cuda() 
     if utils.has_batchnorms(clippo):
         clippo = nn.SyncBatchNorm.convert_sync_batchnorm(clippo)
