@@ -1,0 +1,25 @@
+Data loaded: there are 100000 images.
+model and optimizer are ready.
+Starting clippo training !
+/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/distributed/distributed_c10d.py:2387: UserWarning: torch.distributed._all_gather_base is a private function and will be deprecated. Please use torch.distributed.all_gather_into_tensor instead.
+  warnings.warn(
+Traceback (most recent call last):
+  File "/home/temp/Desktop/KD/CLIPPO/train.py", line 164, in <module>
+    main(args)
+  File "/home/temp/Desktop/KD/CLIPPO/train.py", line 124, in main
+    loss = train_one_epoch(clippo, data_loader, optimizer,
+  File "/home/temp/Desktop/KD/CLIPPO/train.py", line 26, in train_one_epoch
+    logits_per_image, logits_per_text = clippo(image=images, text=text)
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/temp/Desktop/KD/CLIPPO/network.py", line 20, in forward
+    image_features = self.image_proj(self.encoder(image))
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/nn/modules/container.py", line 204, in forward
+    input = module(input)
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/nn/modules/linear.py", line 114, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: mat1 and mat2 shapes cannot be multiplied (125x512 and 768x256)

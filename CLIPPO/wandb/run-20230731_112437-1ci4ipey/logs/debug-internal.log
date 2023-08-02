@@ -1,0 +1,9 @@
+2023-07-31 11:24:37,687 INFO    StreamThr :3954548 [internal.py:wandb_internal():86] W&B internal server running at pid: 3954548, started at: 2023-07-31 11:24:37.687041
+2023-07-31 11:24:37,688 DEBUG   HandlerThread:3954548 [handler.py:handle_request():144] handle_request: status
+2023-07-31 11:24:37,691 INFO    WriterThread:3954548 [datastore.py:open_for_write():85] open: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230731_112437-1ci4ipey/run-1ci4ipey.wandb
+2023-07-31 11:24:37,691 DEBUG   SenderThread:3954548 [sender.py:send():375] send: header
+2023-07-31 11:24:38,691 WARNING StreamThr :3954548 [internal.py:is_dead():414] Internal process exiting, parent pid 3954419 disappeared
+2023-07-31 11:24:38,691 ERROR   StreamThr :3954548 [internal.py:wandb_internal():152] Internal process shutdown.
+2023-07-31 11:24:38,692 INFO    WriterThread:3954548 [datastore.py:close():298] close: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230731_112437-1ci4ipey/run-1ci4ipey.wandb
+2023-07-31 11:24:38,692 INFO    SenderThread:3954548 [sender.py:finish():1550] shutting down sender
+2023-07-31 11:24:39,691 INFO    HandlerThread:3954548 [handler.py:finish():845] shutting down handler

@@ -1,0 +1,15 @@
+Data loaded: there are 2555428 images.
+model and optimizer are ready.
+Starting clippo training !
+Traceback (most recent call last):
+  File "/home/temp/Desktop/KD/CLIPPO/train.py", line 163, in <module>
+    args = parser.parse_args()
+  File "/home/temp/Desktop/KD/CLIPPO/train.py", line 123, in main
+    # ============ training one epoch of CLIPPO ... ============
+  File "/home/temp/Desktop/KD/CLIPPO/train.py", line 57, in train_one_epoch
+    if utils.get_rank() == 0:
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/serialization.py", line 423, in save
+    _save(obj, opened_zipfile, pickle_module, pickle_protocol)
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/serialization.py", line 650, in _save
+    zip_file.write_record(name, storage.data_ptr(), num_bytes)
+KeyboardInterrupt

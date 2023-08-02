@@ -1,0 +1,36 @@
+Data loaded: there are 60000 images.
+model and optimizer are ready.
+Starting clippo training !
+/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/distributed/distributed_c10d.py:2387: UserWarning: torch.distributed._all_gather_base is a private function and will be deprecated. Please use torch.distributed.all_gather_into_tensor instead.
+  warnings.warn(
+Error in sys.excepthook:
+Traceback (most recent call last):
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/wandb/sdk/lib/exit_hooks.py", line 53, in exc_handler
+    traceback.print_exception(exc_type, exc, tb)
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/traceback.py", line 103, in print_exception
+    for line in TracebackException(
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/traceback.py", line 517, in __init__
+    self.stack = StackSummary.extract(
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/traceback.py", line 348, in extract
+    co = f.f_code
+KeyboardInterrupt
+Original exception was:
+Traceback (most recent call last):
+  File "/home/temp/Desktop/KD/CLIPPO/train.py", line 165, in <module>
+    parser = argparse.ArgumentParser('DINO', parents=[get_args_parser()])
+  File "/home/temp/Desktop/KD/CLIPPO/train.py", line 123, in main
+  File "/home/temp/Desktop/KD/CLIPPO/train.py", line 20, in train_one_epoch
+    for images, text in data_loader:
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 628, in __next__
+    data = self._next_data()
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1316, in _next_data
+    idx, data = self._get_data()
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1272, in _get_data
+    success, data = self._try_get_data()
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1120, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/queue.py", line 180, in get
+    self.not_empty.wait(remaining)
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/threading.py", line 316, in wait
+    gotit = waiter.acquire(True, timeout)
+KeyboardInterrupt

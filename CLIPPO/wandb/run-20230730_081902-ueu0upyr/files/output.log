@@ -1,0 +1,4 @@
+Data loaded: there are 1000000 images.
+model and optimizer are ready.
+Starting clippo training !
+/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/distributed/distributed_c10d.py:2387: UserWarning: torch.distributed._all_gather_base is a private function and will be deprecated. Please use torch.distributed.all_gather_into_tensor instead.

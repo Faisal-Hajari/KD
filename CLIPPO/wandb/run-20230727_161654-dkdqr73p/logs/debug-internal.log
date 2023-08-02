@@ -1,0 +1,701 @@
+2023-07-27 16:16:54,177 INFO    StreamThr :2482844 [internal.py:wandb_internal():86] W&B internal server running at pid: 2482844, started at: 2023-07-27 16:16:54.176766
+2023-07-27 16:16:54,179 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status
+2023-07-27 16:16:54,181 INFO    WriterThread:2482844 [datastore.py:open_for_write():85] open: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/run-dkdqr73p.wandb
+2023-07-27 16:16:54,181 DEBUG   SenderThread:2482844 [sender.py:send():375] send: header
+2023-07-27 16:16:54,228 DEBUG   SenderThread:2482844 [sender.py:send():375] send: run
+2023-07-27 16:16:55,152 INFO    SenderThread:2482844 [dir_watcher.py:__init__():219] watching files in: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files
+2023-07-27 16:16:55,152 INFO    SenderThread:2482844 [sender.py:_start_run_threads():1124] run started: dkdqr73p with start time 1690463814.175462
+2023-07-27 16:16:55,153 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:16:55,153 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:16:55,156 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: check_version
+2023-07-27 16:16:55,156 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: check_version
+2023-07-27 16:16:55,523 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: run_start
+2023-07-27 16:16:55,529 DEBUG   HandlerThread:2482844 [system_info.py:__init__():31] System info init
+2023-07-27 16:16:55,529 DEBUG   HandlerThread:2482844 [system_info.py:__init__():46] System info init done
+2023-07-27 16:16:55,529 INFO    HandlerThread:2482844 [system_monitor.py:start():181] Starting system monitor
+2023-07-27 16:16:55,530 INFO    SystemMonitor:2482844 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2023-07-27 16:16:55,530 INFO    HandlerThread:2482844 [system_monitor.py:probe():201] Collecting system info
+2023-07-27 16:16:55,530 INFO    SystemMonitor:2482844 [interfaces.py:start():190] Started cpu monitoring
+2023-07-27 16:16:55,531 INFO    SystemMonitor:2482844 [interfaces.py:start():190] Started disk monitoring
+2023-07-27 16:16:55,531 INFO    SystemMonitor:2482844 [interfaces.py:start():190] Started gpu monitoring
+2023-07-27 16:16:55,532 INFO    SystemMonitor:2482844 [interfaces.py:start():190] Started memory monitoring
+2023-07-27 16:16:55,532 INFO    SystemMonitor:2482844 [interfaces.py:start():190] Started network monitoring
+2023-07-27 16:16:55,594 DEBUG   HandlerThread:2482844 [system_info.py:probe():195] Probing system
+2023-07-27 16:16:55,601 DEBUG   HandlerThread:2482844 [system_info.py:_probe_git():180] Probing git
+2023-07-27 16:16:55,614 DEBUG   HandlerThread:2482844 [system_info.py:_probe_git():188] Probing git done
+2023-07-27 16:16:55,614 DEBUG   HandlerThread:2482844 [system_info.py:probe():240] Probing system done
+2023-07-27 16:16:55,614 DEBUG   HandlerThread:2482844 [system_monitor.py:probe():210] {'os': 'Linux-5.15.0-78-generic-x86_64-with-glibc2.31', 'python': '3.9.16', 'heartbeatAt': '2023-07-27T13:16:55.594457', 'startedAt': '2023-07-27T13:16:54.168684', 'docker': None, 'cuda': None, 'args': ('--local_rank=0', '--batch_size', '90', '--epochs', '50', '--use_fp16', 'True'), 'state': 'running', 'program': '/home/temp/Desktop/KD/CLIPPO/train.py', 'codePath': 'CLIPPO/train.py', 'git': {'remote': 'https://github.com/Faisal-Hajari/KD.git', 'commit': '0bbd59e832c176beaa69ca9c75adb6b6183a99a8'}, 'email': 'faisalhejary@gmail.com', 'root': '/home/temp/Desktop/KD', 'host': 'NCAI-TE-8', 'username': 'faisal', 'executable': '/home/temp/miniconda3/envs/stanford_env/bin/python', 'cpu_count': 32, 'cpu_count_logical': 64, 'cpu_freq': {'current': 2.300390625, 'min': 2200.0, 'max': 3500.0}, 'cpu_freq_per_core': [{'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 4.115, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.4, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.305, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 4.113, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 4.112, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 2.2, 'min': 2200.0, 'max': 3500.0}, {'current': 3.5, 'min': 2200.0, 'max': 3500.0}], 'disk': {'total': 1832.2072448730469, 'used': 978.1691360473633}, 'gpu': 'NVIDIA RTX A5000', 'gpu_count': 4, 'gpu_devices': [{'name': 'NVIDIA RTX A5000', 'memory_total': 25757220864}, {'name': 'NVIDIA RTX A5000', 'memory_total': 25757220864}, {'name': 'NVIDIA RTX A5000', 'memory_total': 25757220864}, {'name': 'NVIDIA RTX A5000', 'memory_total': 25757220864}], 'memory': {'total': 251.51410293579102}}
+2023-07-27 16:16:55,614 INFO    HandlerThread:2482844 [system_monitor.py:probe():211] Finished collecting system info
+2023-07-27 16:16:55,614 INFO    HandlerThread:2482844 [system_monitor.py:probe():214] Publishing system info
+2023-07-27 16:16:55,615 DEBUG   HandlerThread:2482844 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2023-07-27 16:16:55,615 DEBUG   HandlerThread:2482844 [system_info.py:_save_pip():67] Saving pip packages done
+2023-07-27 16:16:55,615 DEBUG   HandlerThread:2482844 [system_info.py:_save_conda():74] Saving list of conda packages installed into the current environment
+2023-07-27 16:16:56,154 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_created():278] file/dir created: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/requirements.txt
+2023-07-27 16:16:56,155 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_created():278] file/dir created: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/conda-environment.yaml
+2023-07-27 16:16:56,155 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_created():278] file/dir created: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:16:58,910 DEBUG   HandlerThread:2482844 [system_info.py:_save_conda():86] Saving conda packages done
+2023-07-27 16:16:58,911 INFO    HandlerThread:2482844 [system_monitor.py:probe():216] Finished publishing system info
+2023-07-27 16:16:58,917 DEBUG   SenderThread:2482844 [sender.py:send():375] send: files
+2023-07-27 16:16:58,917 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-metadata.json with policy now
+2023-07-27 16:16:58,922 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: stop_status
+2023-07-27 16:16:58,923 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: stop_status
+2023-07-27 16:16:59,156 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/conda-environment.yaml
+2023-07-27 16:16:59,156 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_created():278] file/dir created: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-metadata.json
+2023-07-27 16:16:59,464 DEBUG   SenderThread:2482844 [sender.py:send():375] send: telemetry
+2023-07-27 16:16:59,464 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:16:59,676 INFO    wandb-upload_0:2482844 [upload_job.py:push():137] Uploaded file /tmp/tmpj_vla6atwandb/sixxxuxc-wandb-metadata.json
+2023-07-27 16:17:04,465 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:17:08,158 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_created():278] file/dir created: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/output.log
+2023-07-27 16:17:09,622 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:17:10,159 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/output.log
+2023-07-27 16:17:12,244 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:17:12,244 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:17:12,245 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:17:12,246 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:17:12,247 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:17:12,247 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:17:12,248 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:17:12,248 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:17:13,160 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:17:13,959 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: stop_status
+2023-07-27 16:17:13,960 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: stop_status
+2023-07-27 16:17:15,232 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:17:16,012 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:17:16,013 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:17:16,013 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:17:16,014 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:17:16,053 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:17:16,054 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:17:16,054 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:17:16,054 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:17:16,161 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:17:19,622 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:17:19,622 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:17:19,623 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:17:19,623 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:17:19,624 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:17:19,624 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:17:19,624 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:17:19,624 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:17:20,162 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:17:20,625 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:17:23,265 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:17:23,266 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:17:23,267 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:17:23,267 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:17:23,267 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:17:23,267 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:17:23,267 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:17:23,271 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:17:24,164 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:17:26,277 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:17:26,888 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:17:26,889 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:17:26,889 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:17:26,889 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:17:26,890 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:17:26,890 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:17:26,890 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:17:26,894 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:17:27,165 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:17:27,165 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/config.yaml
+2023-07-27 16:17:28,959 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: stop_status
+2023-07-27 16:17:28,959 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: stop_status
+2023-07-27 16:17:30,469 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:17:30,469 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:17:30,470 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:17:30,470 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:17:30,509 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:17:30,510 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:17:30,510 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:17:30,510 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:17:31,166 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:17:32,512 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:17:34,080 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:17:34,081 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:17:34,081 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:17:34,082 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:17:34,082 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:17:34,082 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:17:34,082 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:17:34,082 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:17:34,167 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:17:37,706 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:17:37,707 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:17:37,708 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:17:37,708 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:17:37,708 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:17:37,708 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:17:37,709 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:17:37,709 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:17:37,709 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:17:38,168 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:17:41,348 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:17:41,349 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:17:41,349 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:17:41,350 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:17:41,350 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:17:41,350 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:17:41,350 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:17:41,351 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:17:42,169 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:17:43,352 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:17:43,959 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: stop_status
+2023-07-27 16:17:43,959 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: stop_status
+2023-07-27 16:17:45,013 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:17:45,014 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:17:45,014 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:17:45,014 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:17:45,057 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:17:45,058 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:17:45,058 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:17:45,058 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:17:45,170 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:17:48,651 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:17:48,652 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:17:48,653 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:17:48,653 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:17:48,654 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:17:48,654 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:17:48,654 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:17:48,655 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:17:48,655 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:17:49,171 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:17:52,301 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:17:52,301 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:17:52,302 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:17:52,302 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:17:52,303 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:17:52,303 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:17:52,303 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:17:52,303 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:17:53,173 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:17:54,304 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:17:55,532 DEBUG   SystemMonitor:2482844 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2023-07-27 16:17:55,534 DEBUG   SenderThread:2482844 [sender.py:send():375] send: stats
+2023-07-27 16:17:55,945 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:17:55,946 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:17:55,947 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:17:55,947 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:17:55,947 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:17:55,948 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:17:55,948 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:17:55,948 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:17:56,174 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:17:58,959 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: stop_status
+2023-07-27 16:17:58,959 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: stop_status
+2023-07-27 16:17:59,324 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:17:59,592 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:17:59,593 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:17:59,593 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:17:59,594 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:17:59,633 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:17:59,634 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:17:59,634 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:17:59,634 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:00,175 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:18:03,223 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:18:03,224 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:18:03,225 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:18:03,225 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:18:03,226 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:03,227 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:18:03,227 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:18:03,227 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:04,176 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:18:05,227 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:18:06,843 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:18:06,843 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:18:06,844 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:18:06,844 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:18:06,845 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:06,845 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:18:06,845 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:18:06,845 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:07,177 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:18:10,458 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:18:10,458 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:18:10,459 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:18:10,459 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:18:10,459 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:18:10,460 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:10,460 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:18:10,460 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:18:10,460 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:11,178 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:18:14,093 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: stop_status
+2023-07-27 16:18:14,094 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: stop_status
+2023-07-27 16:18:14,096 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:18:14,096 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:18:14,391 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:18:14,391 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:18:14,393 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:14,393 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:18:14,393 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:18:14,393 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:15,179 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:18:16,394 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:18:17,708 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:18:17,709 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:18:17,709 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:18:17,710 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:18:17,710 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:17,710 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:18:17,710 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:18:17,710 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:18,180 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:18:21,334 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:18:21,334 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:18:21,335 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:18:21,335 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:18:21,336 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:21,336 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:18:21,336 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:18:21,336 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:22,182 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:18:22,337 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:18:24,992 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:18:24,992 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:18:24,993 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:18:24,994 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:18:24,995 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:24,995 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:18:24,995 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:18:24,995 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:25,183 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:18:25,535 DEBUG   SenderThread:2482844 [sender.py:send():375] send: stats
+2023-07-27 16:18:27,536 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:18:28,666 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:18:28,667 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:18:28,667 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:18:28,667 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:18:28,668 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:28,668 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:18:28,668 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:18:28,668 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:29,156 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: stop_status
+2023-07-27 16:18:29,157 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: stop_status
+2023-07-27 16:18:29,184 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:18:32,253 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:18:32,253 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:18:32,254 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:18:32,254 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:18:32,255 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:32,255 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:18:32,255 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:18:32,255 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:33,185 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:18:33,256 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:18:35,893 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:18:35,893 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:18:35,894 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:18:35,894 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:18:35,896 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:35,896 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:18:35,896 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:18:35,896 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:36,186 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:18:38,897 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:18:39,510 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:18:39,511 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:18:39,512 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:18:39,512 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:18:39,512 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:39,512 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:18:39,512 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:18:39,512 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:40,187 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:18:43,183 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:18:43,184 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:18:43,185 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:18:43,185 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:18:43,186 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:43,186 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:18:43,186 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:18:43,186 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:43,188 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:18:44,100 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:18:44,109 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: stop_status
+2023-07-27 16:18:44,109 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: stop_status
+2023-07-27 16:18:46,894 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:18:46,895 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:18:46,895 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:18:46,895 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:18:46,897 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:46,897 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:18:46,897 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:18:46,897 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:47,189 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:18:49,898 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:18:50,598 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:18:50,598 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:18:50,599 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:18:50,599 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:18:50,599 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:50,600 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:18:50,600 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:18:50,600 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:51,191 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:18:54,352 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:18:54,352 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:18:54,353 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:18:54,354 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:18:54,354 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:54,354 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:18:54,354 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:18:54,354 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:55,192 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:18:55,355 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:18:55,537 DEBUG   SenderThread:2482844 [sender.py:send():375] send: stats
+2023-07-27 16:18:58,000 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:18:58,000 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:18:58,001 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:18:58,001 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:18:58,003 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:58,004 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:18:58,004 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:18:58,004 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:18:58,193 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:18:59,204 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: stop_status
+2023-07-27 16:18:59,204 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: stop_status
+2023-07-27 16:19:00,527 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:19:01,766 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:19:01,767 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:19:01,768 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:19:01,768 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:19:01,768 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:19:01,769 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:19:01,769 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:19:01,772 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:19:02,194 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:19:05,399 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:19:05,399 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:19:05,400 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:19:05,400 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:19:05,401 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:19:05,401 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:19:05,401 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:19:05,401 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:19:06,195 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:19:06,402 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:19:09,037 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:19:09,037 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:19:09,038 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:19:09,038 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:19:09,040 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:19:09,040 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:19:09,041 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:19:09,044 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:19:09,196 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:19:12,045 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:19:12,646 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:19:12,647 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:19:12,647 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:19:12,648 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:19:12,648 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:19:12,648 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:19:12,648 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:19:12,648 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:19:13,198 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:19:14,186 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: stop_status
+2023-07-27 16:19:14,187 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: stop_status
+2023-07-27 16:19:16,318 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:19:16,318 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:19:16,319 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:19:16,319 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:19:16,319 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:19:16,320 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:19:16,320 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:19:16,320 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:19:17,199 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:19:17,320 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:19:19,936 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:19:19,936 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:19:19,937 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:19:19,937 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:19:19,939 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:19:19,939 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:19:19,940 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:19:19,940 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:19:20,200 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:19:22,941 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:19:23,590 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:19:23,591 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:19:23,592 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:19:23,592 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:19:23,592 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:19:23,593 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:19:23,593 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:19:23,593 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:19:24,201 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:19:25,539 DEBUG   SenderThread:2482844 [sender.py:send():375] send: stats
+2023-07-27 16:19:27,375 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:19:27,376 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:19:27,376 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:19:27,377 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:19:27,377 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:19:27,377 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:19:27,377 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:19:27,377 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:19:28,202 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:19:28,378 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:19:29,185 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: stop_status
+2023-07-27 16:19:29,186 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: stop_status
+2023-07-27 16:19:31,009 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:19:31,010 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:19:31,011 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:19:31,011 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:19:31,013 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:19:31,013 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:19:31,013 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:19:31,013 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:19:31,203 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:19:34,014 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:19:34,651 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:19:34,651 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:19:34,652 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:19:34,652 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:19:34,653 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:19:34,653 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:19:34,653 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:19:34,653 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:19:35,204 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:19:38,448 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:19:38,449 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:19:38,450 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:19:38,450 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:19:38,450 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:19:38,450 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:19:38,451 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:19:38,451 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:19:39,206 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:19:39,451 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:19:42,149 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:19:42,150 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:19:42,150 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:19:42,151 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:19:42,153 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:19:42,153 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:19:42,153 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:19:42,157 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:19:42,207 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:19:44,185 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: stop_status
+2023-07-27 16:19:44,186 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: stop_status
+2023-07-27 16:19:44,476 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:19:45,802 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:19:45,802 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:19:45,803 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:19:45,803 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:19:45,803 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:19:45,804 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:19:45,804 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:19:45,804 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:19:46,208 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:19:49,446 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:19:49,446 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:19:49,447 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:19:49,447 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:19:49,448 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:19:49,448 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:19:49,448 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:19:49,448 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:19:50,209 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:19:50,448 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:19:53,189 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:19:53,190 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:19:53,191 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:19:53,191 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:19:53,192 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:19:53,192 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:19:53,193 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:19:53,193 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:19:53,210 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:19:55,540 DEBUG   SenderThread:2482844 [sender.py:send():375] send: stats
+2023-07-27 16:19:55,541 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:19:56,909 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:19:56,910 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:19:56,910 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:19:56,911 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:19:56,911 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:19:56,911 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:19:56,912 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:19:56,915 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:19:57,212 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:19:59,186 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: stop_status
+2023-07-27 16:19:59,186 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: stop_status
+2023-07-27 16:20:00,609 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:20:00,610 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:20:00,611 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:20:00,611 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:20:00,611 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:20:00,612 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:20:00,612 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:20:00,612 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:20:00,612 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:20:01,213 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:20:04,256 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:20:04,257 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:20:04,258 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:20:04,258 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:20:04,260 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:20:04,260 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:20:04,260 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:20:04,260 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:20:05,214 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:20:06,261 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:20:07,969 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:20:07,969 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:20:07,970 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:20:07,970 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:20:07,970 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:20:07,971 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:20:07,971 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:20:07,971 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:20:08,215 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:20:11,609 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:20:11,609 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: partial_history
+2023-07-27 16:20:11,610 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:20:11,610 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:20:11,610 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:20:11,611 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:20:11,611 DEBUG   SenderThread:2482844 [sender.py:send():375] send: history
+2023-07-27 16:20:11,611 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: summary_record
+2023-07-27 16:20:11,611 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:20:12,216 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:20:13,270 DEBUG   SenderThread:2482844 [sender.py:send():375] send: exit
+2023-07-27 16:20:13,270 INFO    SenderThread:2482844 [sender.py:send_exit():598] handling exit code: 0
+2023-07-27 16:20:13,270 INFO    SenderThread:2482844 [sender.py:send_exit():600] handling runtime: 197
+2023-07-27 16:20:13,270 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:20:13,270 INFO    SenderThread:2482844 [sender.py:send_exit():606] send defer
+2023-07-27 16:20:13,271 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: defer
+2023-07-27 16:20:13,271 INFO    HandlerThread:2482844 [handler.py:handle_request_defer():170] handle defer: 0
+2023-07-27 16:20:13,271 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: defer
+2023-07-27 16:20:13,271 INFO    SenderThread:2482844 [sender.py:send_request_defer():622] handle sender defer: 0
+2023-07-27 16:20:13,271 INFO    SenderThread:2482844 [sender.py:transition_state():626] send defer: 1
+2023-07-27 16:20:13,271 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: defer
+2023-07-27 16:20:13,271 INFO    HandlerThread:2482844 [handler.py:handle_request_defer():170] handle defer: 1
+2023-07-27 16:20:13,272 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: defer
+2023-07-27 16:20:13,272 INFO    SenderThread:2482844 [sender.py:send_request_defer():622] handle sender defer: 1
+2023-07-27 16:20:13,272 INFO    SenderThread:2482844 [sender.py:transition_state():626] send defer: 2
+2023-07-27 16:20:13,272 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: defer
+2023-07-27 16:20:13,272 INFO    HandlerThread:2482844 [handler.py:handle_request_defer():170] handle defer: 2
+2023-07-27 16:20:13,272 INFO    HandlerThread:2482844 [system_monitor.py:finish():190] Stopping system monitor
+2023-07-27 16:20:13,272 DEBUG   SystemMonitor:2482844 [system_monitor.py:_start():166] Finished system metrics aggregation loop
+2023-07-27 16:20:13,272 DEBUG   SystemMonitor:2482844 [system_monitor.py:_start():170] Publishing last batch of metrics
+2023-07-27 16:20:13,274 INFO    HandlerThread:2482844 [interfaces.py:finish():202] Joined cpu monitor
+2023-07-27 16:20:13,274 INFO    HandlerThread:2482844 [interfaces.py:finish():202] Joined disk monitor
+2023-07-27 16:20:13,692 INFO    HandlerThread:2482844 [interfaces.py:finish():202] Joined gpu monitor
+2023-07-27 16:20:13,693 INFO    HandlerThread:2482844 [interfaces.py:finish():202] Joined memory monitor
+2023-07-27 16:20:13,693 INFO    HandlerThread:2482844 [interfaces.py:finish():202] Joined network monitor
+2023-07-27 16:20:13,693 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: defer
+2023-07-27 16:20:13,694 INFO    SenderThread:2482844 [sender.py:send_request_defer():622] handle sender defer: 2
+2023-07-27 16:20:13,694 INFO    SenderThread:2482844 [sender.py:transition_state():626] send defer: 3
+2023-07-27 16:20:13,694 DEBUG   SenderThread:2482844 [sender.py:send():375] send: stats
+2023-07-27 16:20:13,694 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: defer
+2023-07-27 16:20:13,695 INFO    HandlerThread:2482844 [handler.py:handle_request_defer():170] handle defer: 3
+2023-07-27 16:20:13,695 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: defer
+2023-07-27 16:20:13,695 INFO    SenderThread:2482844 [sender.py:send_request_defer():622] handle sender defer: 3
+2023-07-27 16:20:13,695 INFO    SenderThread:2482844 [sender.py:transition_state():626] send defer: 4
+2023-07-27 16:20:13,695 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: defer
+2023-07-27 16:20:13,695 INFO    HandlerThread:2482844 [handler.py:handle_request_defer():170] handle defer: 4
+2023-07-27 16:20:13,695 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: defer
+2023-07-27 16:20:13,696 INFO    SenderThread:2482844 [sender.py:send_request_defer():622] handle sender defer: 4
+2023-07-27 16:20:13,696 INFO    SenderThread:2482844 [sender.py:transition_state():626] send defer: 5
+2023-07-27 16:20:13,696 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: defer
+2023-07-27 16:20:13,696 INFO    HandlerThread:2482844 [handler.py:handle_request_defer():170] handle defer: 5
+2023-07-27 16:20:13,696 DEBUG   SenderThread:2482844 [sender.py:send():375] send: summary
+2023-07-27 16:20:13,697 INFO    SenderThread:2482844 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-07-27 16:20:13,697 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: defer
+2023-07-27 16:20:13,697 INFO    SenderThread:2482844 [sender.py:send_request_defer():622] handle sender defer: 5
+2023-07-27 16:20:13,697 INFO    SenderThread:2482844 [sender.py:transition_state():626] send defer: 6
+2023-07-27 16:20:13,697 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: defer
+2023-07-27 16:20:13,697 INFO    HandlerThread:2482844 [handler.py:handle_request_defer():170] handle defer: 6
+2023-07-27 16:20:13,697 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: defer
+2023-07-27 16:20:13,697 INFO    SenderThread:2482844 [sender.py:send_request_defer():622] handle sender defer: 6
+2023-07-27 16:20:13,697 INFO    SenderThread:2482844 [sender.py:transition_state():626] send defer: 7
+2023-07-27 16:20:13,698 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: status_report
+2023-07-27 16:20:13,698 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: defer
+2023-07-27 16:20:13,698 INFO    HandlerThread:2482844 [handler.py:handle_request_defer():170] handle defer: 7
+2023-07-27 16:20:13,698 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: defer
+2023-07-27 16:20:13,698 INFO    SenderThread:2482844 [sender.py:send_request_defer():622] handle sender defer: 7
+2023-07-27 16:20:13,848 INFO    SenderThread:2482844 [sender.py:transition_state():626] send defer: 8
+2023-07-27 16:20:13,849 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: defer
+2023-07-27 16:20:13,849 INFO    HandlerThread:2482844 [handler.py:handle_request_defer():170] handle defer: 8
+2023-07-27 16:20:13,849 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: defer
+2023-07-27 16:20:13,849 INFO    SenderThread:2482844 [sender.py:send_request_defer():622] handle sender defer: 8
+2023-07-27 16:20:13,853 INFO    SenderThread:2482844 [sender.py:transition_state():626] send defer: 9
+2023-07-27 16:20:13,853 DEBUG   SenderThread:2482844 [sender.py:send():375] send: artifact
+2023-07-27 16:20:13,856 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: defer
+2023-07-27 16:20:13,856 INFO    HandlerThread:2482844 [handler.py:handle_request_defer():170] handle defer: 9
+2023-07-27 16:20:14,217 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/output.log
+2023-07-27 16:20:14,217 INFO    Thread-12 :2482844 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:20:14,270 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: poll_exit
+2023-07-27 16:20:15,215 INFO    SenderThread:2482844 [sender.py:send_artifact():1474] sent artifact job-https___github.com_Faisal-Hajari_KD.git_CLIPPO_train.py - {'id': 'QXJ0aWZhY3Q6NTI0NzAzNzU5', 'digest': '421c10c1cf105255e0a427b6d11b910a', 'state': 'COMMITTED', 'aliases': [{'artifactCollectionName': 'job-https___github.com_Faisal-Hajari_KD.git_CLIPPO_train.py', 'alias': 'latest'}, {'artifactCollectionName': 'job-https___github.com_Faisal-Hajari_KD.git_CLIPPO_train.py', 'alias': 'v12'}], 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjg1NjgyMDYx', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6NTI0NzAzNzU5', 'versionIndex': 12}}, 'version': 'v12'}
+2023-07-27 16:20:15,215 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: defer
+2023-07-27 16:20:15,215 INFO    SenderThread:2482844 [sender.py:send_request_defer():622] handle sender defer: 9
+2023-07-27 16:20:15,215 INFO    SenderThread:2482844 [dir_watcher.py:finish():365] shutting down directory watcher
+2023-07-27 16:20:15,217 INFO    SenderThread:2482844 [dir_watcher.py:finish():395] scan: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files
+2023-07-27 16:20:15,218 INFO    SenderThread:2482844 [dir_watcher.py:finish():409] scan save: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/config.yaml config.yaml
+2023-07-27 16:20:15,218 INFO    SenderThread:2482844 [dir_watcher.py:finish():409] scan save: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/conda-environment.yaml conda-environment.yaml
+2023-07-27 16:20:15,218 INFO    SenderThread:2482844 [dir_watcher.py:finish():409] scan save: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-metadata.json wandb-metadata.json
+2023-07-27 16:20:15,218 INFO    SenderThread:2482844 [dir_watcher.py:finish():409] scan save: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/output.log output.log
+2023-07-27 16:20:15,218 INFO    SenderThread:2482844 [dir_watcher.py:finish():409] scan save: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/requirements.txt requirements.txt
+2023-07-27 16:20:15,221 INFO    SenderThread:2482844 [dir_watcher.py:finish():409] scan save: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json wandb-summary.json
+2023-07-27 16:20:15,225 INFO    SenderThread:2482844 [sender.py:transition_state():626] send defer: 10
+2023-07-27 16:20:15,225 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: poll_exit
+2023-07-27 16:20:15,226 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: defer
+2023-07-27 16:20:15,226 INFO    HandlerThread:2482844 [handler.py:handle_request_defer():170] handle defer: 10
+2023-07-27 16:20:15,236 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: defer
+2023-07-27 16:20:15,237 INFO    SenderThread:2482844 [sender.py:send_request_defer():622] handle sender defer: 10
+2023-07-27 16:20:15,237 INFO    SenderThread:2482844 [file_pusher.py:finish():168] shutting down file pusher
+2023-07-27 16:20:15,271 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: poll_exit
+2023-07-27 16:20:15,272 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: poll_exit
+2023-07-27 16:20:15,823 INFO    wandb-upload_2:2482844 [upload_job.py:push():137] Uploaded file /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/output.log
+2023-07-27 16:20:16,122 INFO    wandb-upload_1:2482844 [upload_job.py:push():137] Uploaded file /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/conda-environment.yaml
+2023-07-27 16:20:16,154 INFO    wandb-upload_4:2482844 [upload_job.py:push():137] Uploaded file /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/wandb-summary.json
+2023-07-27 16:20:16,203 INFO    wandb-upload_0:2482844 [upload_job.py:push():137] Uploaded file /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/config.yaml
+2023-07-27 16:20:16,272 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: poll_exit
+2023-07-27 16:20:16,273 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: poll_exit
+2023-07-27 16:20:17,274 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: poll_exit
+2023-07-27 16:20:17,274 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: poll_exit
+2023-07-27 16:20:17,681 INFO    wandb-upload_3:2482844 [upload_job.py:push():137] Uploaded file /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/files/requirements.txt
+2023-07-27 16:20:17,882 INFO    Thread-11 :2482844 [sender.py:transition_state():626] send defer: 11
+2023-07-27 16:20:17,882 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: defer
+2023-07-27 16:20:17,882 INFO    HandlerThread:2482844 [handler.py:handle_request_defer():170] handle defer: 11
+2023-07-27 16:20:17,883 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: defer
+2023-07-27 16:20:17,883 INFO    SenderThread:2482844 [sender.py:send_request_defer():622] handle sender defer: 11
+2023-07-27 16:20:17,883 INFO    SenderThread:2482844 [file_pusher.py:join():173] waiting for file pusher
+2023-07-27 16:20:17,883 INFO    SenderThread:2482844 [sender.py:transition_state():626] send defer: 12
+2023-07-27 16:20:17,883 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: defer
+2023-07-27 16:20:17,883 INFO    HandlerThread:2482844 [handler.py:handle_request_defer():170] handle defer: 12
+2023-07-27 16:20:17,883 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: defer
+2023-07-27 16:20:17,883 INFO    SenderThread:2482844 [sender.py:send_request_defer():622] handle sender defer: 12
+2023-07-27 16:20:18,170 INFO    SenderThread:2482844 [sender.py:transition_state():626] send defer: 13
+2023-07-27 16:20:18,170 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: defer
+2023-07-27 16:20:18,170 INFO    HandlerThread:2482844 [handler.py:handle_request_defer():170] handle defer: 13
+2023-07-27 16:20:18,171 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: defer
+2023-07-27 16:20:18,171 INFO    SenderThread:2482844 [sender.py:send_request_defer():622] handle sender defer: 13
+2023-07-27 16:20:18,171 INFO    SenderThread:2482844 [sender.py:transition_state():626] send defer: 14
+2023-07-27 16:20:18,171 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: defer
+2023-07-27 16:20:18,171 INFO    HandlerThread:2482844 [handler.py:handle_request_defer():170] handle defer: 14
+2023-07-27 16:20:18,171 DEBUG   SenderThread:2482844 [sender.py:send():375] send: final
+2023-07-27 16:20:18,171 DEBUG   SenderThread:2482844 [sender.py:send():375] send: footer
+2023-07-27 16:20:18,171 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: defer
+2023-07-27 16:20:18,171 INFO    SenderThread:2482844 [sender.py:send_request_defer():622] handle sender defer: 14
+2023-07-27 16:20:18,172 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: poll_exit
+2023-07-27 16:20:18,172 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: poll_exit
+2023-07-27 16:20:18,173 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: poll_exit
+2023-07-27 16:20:18,173 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: poll_exit
+2023-07-27 16:20:18,173 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: server_info
+2023-07-27 16:20:18,174 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: get_summary
+2023-07-27 16:20:18,174 DEBUG   SenderThread:2482844 [sender.py:send_request():402] send_request: server_info
+2023-07-27 16:20:18,176 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: sampled_history
+2023-07-27 16:20:18,389 INFO    MainThread:2482844 [wandb_run.py:_footer_history_summary_info():3476] rendering history
+2023-07-27 16:20:18,390 INFO    MainThread:2482844 [wandb_run.py:_footer_history_summary_info():3508] rendering summary
+2023-07-27 16:20:18,390 INFO    MainThread:2482844 [wandb_run.py:_footer_sync_info():3434] logging synced files
+2023-07-27 16:20:18,390 DEBUG   HandlerThread:2482844 [handler.py:handle_request():144] handle_request: shutdown
+2023-07-27 16:20:18,391 INFO    HandlerThread:2482844 [handler.py:finish():845] shutting down handler
+2023-07-27 16:20:19,174 INFO    WriterThread:2482844 [datastore.py:close():298] close: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230727_161654-dkdqr73p/run-dkdqr73p.wandb
+2023-07-27 16:20:19,389 INFO    SenderThread:2482844 [sender.py:finish():1550] shutting down sender
+2023-07-27 16:20:19,390 INFO    SenderThread:2482844 [file_pusher.py:finish():168] shutting down file pusher
+2023-07-27 16:20:19,390 INFO    SenderThread:2482844 [file_pusher.py:join():173] waiting for file pusher

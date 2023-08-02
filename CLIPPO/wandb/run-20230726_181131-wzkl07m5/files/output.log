@@ -1,0 +1,33 @@
+Data loaded: there are 2555428 images.
+model and optimizer are ready.
+Starting clippo training !
+Traceback (most recent call last):
+  File "/home/temp/Desktop/KD/CLIPPO/train.py", line 161, in <module>
+    main(args)
+  File "/home/temp/Desktop/KD/CLIPPO/train.py", line 121, in main
+    loss = train_one_epoch(clippo, data_loader, optimizer,
+  File "/home/temp/Desktop/KD/CLIPPO/train.py", line 25, in train_one_epoch
+    logits_per_image, logits_per_text = clippo(image=images, text=text)
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/temp/Desktop/KD/CLIPPO/network.py", line 19, in forward
+    text_features = self.encoder(text)
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/timm/models/vision_transformer.py", line 549, in forward
+    x = self.forward_features(x)
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/timm/models/vision_transformer.py", line 538, in forward_features
+    x = self.blocks(x)
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/nn/modules/container.py", line 204, in forward
+    input = module(input)
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/timm/models/vision_transformer.py", line 268, in forward
+    x = x + self.drop_path1(self.ls1(self.attn(self.norm1(x))))
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/timm/models/vision_transformer.py", line 224, in forward
+    x = (attn @ v).transpose(1, 2).reshape(B, N, C)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB (GPU 0; 23.68 GiB total capacity; 21.81 GiB already allocated; 10.94 MiB free; 22.19 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF

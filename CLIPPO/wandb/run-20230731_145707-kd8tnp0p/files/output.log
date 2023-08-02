@@ -1,0 +1,14 @@
+Data loaded: there are 60000 images.
+model and optimizer are ready.
+Starting clippo training !
+/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/distributed/distributed_c10d.py:2387: UserWarning: torch.distributed._all_gather_base is a private function and will be deprecated. Please use torch.distributed.all_gather_into_tensor instead.
+  warnings.warn(
+torch.Size([11000])
+Traceback (most recent call last):
+  File "/home/temp/Desktop/KD/CLIPPO/train.py", line 168, in <module>
+    main(args)
+  File "/home/temp/Desktop/KD/CLIPPO/train.py", line 126, in main
+    loss = train_one_epoch(clippo, data_loader, optimizer,
+  File "/home/temp/Desktop/KD/CLIPPO/train.py", line 38, in train_one_epoch
+    wandb.log({"mini_batch_loss": total_loss.item()})
+ValueError: only one element tensors can be converted to Python scalars

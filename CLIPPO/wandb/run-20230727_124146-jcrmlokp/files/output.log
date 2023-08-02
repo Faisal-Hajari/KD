@@ -1,0 +1,15 @@
+Data loaded: there are 500 images.
+model and optimizer are ready.
+Starting clippo training !
+Traceback (most recent call last):
+  File "/home/temp/Desktop/KD/CLIPPO/train.py", line 164, in <module>
+    main(args)
+  File "/home/temp/Desktop/KD/CLIPPO/train.py", line 124, in main
+    loss = train_one_epoch(clippo, data_loader, optimizer,
+  File "/home/temp/Desktop/KD/CLIPPO/train.py", line 50, in train_one_epoch
+    fp16_scaler.scale(total_loss).backward(retain_graph=True)
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/_tensor.py", line 488, in backward
+    torch.autograd.backward(
+  File "/home/temp/miniconda3/envs/stanford_env/lib/python3.9/site-packages/torch/autograd/__init__.py", line 197, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 178.00 MiB (GPU 0; 23.68 GiB total capacity; 20.38 GiB already allocated; 38.94 MiB free; 20.76 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF

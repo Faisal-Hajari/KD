@@ -9,24 +9,31 @@ from torch import nn
 import wandb
 
 import utils
-from dataset import CC3M
+from dataset import CC3M, Mnist, MNIST
 from network import CLIPPO
+from tim_and_bert import CLIP, DINOLoss
 
 def train_one_epoch(clippo, data_loader, optimizer, lr_schedule, epoch, fp16_scaler, args): 
     loss_img = nn.CrossEntropyLoss()
     loss_txt = nn.CrossEntropyLoss()
-
+    loss_dino = DINOLoss(512, 0.04).cuda()
     for images, text in data_loader: 
         with torch.cuda.amp.autocast(fp16_scaler is not None):
             images = images.cuda() 
             text = text.cuda() 
             #TODO: add discoCLip here. 
             logits_per_image, logits_per_text = clippo(image=images, text=text)
-            
-            ground_truth = torch.arange(len(images),dtype=torch.long).cuda()
-
-            total_loss = (loss_img(logits_per_image,ground_truth) + loss_txt(logits_per_text,ground_truth))/2
-            total_loss.backward(retain_graph=True)
+            # bs = 90 
+            label = torch.arange(logits_per_image.shape[0]).long().cuda() 
+            if utils.get_rank() == 0:
+                wandb.log({f"labels_size at {utils.get_rank()}": label.size()[0]})
+            # loss1 = loss_img(logits_per_image, label)
+            # loss2 = loss_txt(logits_per_text, label)
+            # total_loss = (loss1+loss2)/2
+            l1, l2 = loss_dino(logits_per_text, logits_per_image)
+            #print(l1.size())
+            total_loss = ((l1+l2)/2).mean()
+            #total_loss.backward(retain_graph=True)
             if utils.get_rank() == 0:
                 wandb.log({"mini_batch_loss": total_loss.item()})
 
@@ -37,12 +44,12 @@ def train_one_epoch(clippo, data_loader, optimizer, lr_schedule, epoch, fp16_sca
         
         optimizer.zero_grad()
         if fp16_scaler is None:
-            total_loss.backward()
+            total_loss.backward(retain_graph=True)
             if args.clip_grad:
                 param_norms = utils.clip_gradients(clippo, args.clip_grad)
             optimizer.step()
         else: 
-            fp16_scaler.scale(total_loss).backward()
+            fp16_scaler.scale(total_loss).backward(retain_graph=True)
             if args.clip_grad:
                 fp16_scaler.unscale_(optimizer)  # unscale the gradients of optimizer's assigned params in-place
                 param_norms = utils.clip_gradients(clippo, args.clip_grad)
@@ -50,7 +57,7 @@ def train_one_epoch(clippo, data_loader, optimizer, lr_schedule, epoch, fp16_sca
             fp16_scaler.update()
 
         if utils.get_rank() == 0:
-            torch.save(clippo.state_dict(), 'clippo.pt')
+            torch.save(clippo.state_dict(), 'clip.pt')
     # print(loss)
     # print("HELLO")
     #TODO: return logs 
@@ -78,9 +85,9 @@ def main(args):
         transforms.ToTensor(), 
         transforms.Normalize(mean=[0.485, 0.456, 0.406],
                              std=[0.229, 0.224, 0.225]),
-        transforms.Resize((224, 224))
+        transforms.Resize((32, 32))
     ])
-    dataset = CC3M(transform, transform)
+    dataset = Mnist(lambda x: torch.tensor(x), transform) #('mnist', download=True, transform=transform, target_transform=lambda x: torch.tensor(x, dtype=torch.long))#Mnist(transform, transform)
     sampler = torch.utils.data.DistributedSampler(dataset, shuffle=True)
     data_loader = torch.utils.data.DataLoader(
         dataset,
@@ -91,7 +98,7 @@ def main(args):
         drop_last=True,
     )
     print(f"Data loaded: there are {len(dataset)} images.")
-    clippo = CLIPPO()
+    clippo = CLIP()
     clippo = clippo.cuda() 
     if utils.has_batchnorms(clippo):
         clippo = nn.SyncBatchNorm.convert_sync_batchnorm(clippo)
@@ -122,8 +129,10 @@ def main(args):
         # ============ writing logs ... ============
         #TODO: add logs 
         # print(loss)
-    if utils.get_rank() == 0:
-        torch.save(clippo.state_dict(), 'clippo.pt')
+        # if utils.get_rank() == 0:
+        #     torch.save(clippo.state_dict(), f'clippo{epoch}.pt')
+
+
 def get_args_parser():
     parser = argparse.ArgumentParser('CLIPPO', add_help=False)
 
@@ -133,11 +142,11 @@ def get_args_parser():
     parser.add_argument('--seed', default=0, type=int, help='Random seed.')
     parser.add_argument('--batch_size_per_gpu', default=64, type=int,
         help='Per-GPU batch-size : number of distinct images loaded on one GPU.')
-    parser.add_argument("--lr", default=0.0005, type=float, help="""Learning rate at the end of
+    parser.add_argument("--lr", default=0.05, type=float, help="""Learning rate at the end of
         linear warmup (highest LR used during training). The learning rate is linearly scaled
         with the batch size, and specified here for a reference batch size of 256.""")
     parser.add_argument('--epochs', default=100, type=int, help='Number of epochs of training.')
-    parser.add_argument("--warmup_epochs", default=10, type=int,
+    parser.add_argument("--warmup_epochs", default=5, type=int,
         help="Number of epochs for the linear learning-rate warm up.")
     parser.add_argument('--min_lr', type=float, default=1e-6, help="""Target LR at the
         end of optimization. We use a cosine LR schedule with linear warmup.""")

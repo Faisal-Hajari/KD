@@ -26,7 +26,7 @@ def render_text(txt:str, image_size: int=224, font_size: int = 16, max_chars=768
 
 class CC3M(Dataset):
     def __init__(self, text_transforms=None, image_transforms=None) -> None:
-        df = pd.read_csv("/home/temp/Desktop/KD/CLIPPO/cc3m_full_with_path.csv")#.iloc[:16]
+        df = pd.read_csv("/home/temp/Desktop/KD/CLIPPO/cc3m_full_with_path.csv").iloc[:4_000]
         df['path'] = df['path'].apply(lambda x: x.replace("/home/temp/Desktop/", "/data/"))
         self.df = df
         self.text_transfroms = text_transforms
@@ -46,7 +46,7 @@ class CC3M(Dataset):
             txt = render_text(txt).convert('RGB')
             if self.text_transfroms:
                 txt = self.text_transfroms(txt)
-            return image, txt
+            return image,txt #row['caption']  #txt
         
         except:  
             replace_idx = torch.randint(17_000, (1, 1)).item()
@@ -55,3 +55,23 @@ class CC3M(Dataset):
         
     def __len__(self): 
         return len(self.df)
+
+from torchvision.datasets import MNIST
+class Mnist(Dataset): 
+    def __init__(self, text_transforms=None, image_transforms=None) -> None:
+        self.data = MNIST('mnist', download=True)
+        self.text_transfroms = text_transforms
+        self.image_transforms = image_transforms
+    
+    def __len__(self): 
+        return len(self.data)
+    
+    def __getitem__(self, index):
+        image, text = self.data[index]
+        if self.image_transforms: 
+            image = self.image_transforms(image.convert('RGB'))  
+        #text = render_text(str(text), image_size=32).convert('RGB')
+        if self.text_transfroms:
+            text = self.text_transfroms(text)
+        
+        return image, text
