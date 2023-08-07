@@ -16,28 +16,25 @@ from tim_and_bert import CLIP, DINOLoss
 def train_one_epoch(clippo, data_loader, optimizer, lr_schedule, epoch, fp16_scaler, args): 
     loss_img = nn.CrossEntropyLoss()
     loss_txt = nn.CrossEntropyLoss()
-    loss_dino = DINOLoss(512, 0.04).cuda()
+    loss_dino = DINOLoss(2, 0.04).cuda()
     for images, text in data_loader: 
         with torch.cuda.amp.autocast(fp16_scaler is not None):
             images = images.cuda() 
             text = text.cuda() 
             #TODO: add discoCLip here. 
             logits_per_image, logits_per_text = clippo(image=images, text=text)
+            # should be moved to losses.py
             # bs = 90 
-            label = torch.arange(logits_per_image.shape[0]).long().cuda() 
-            if utils.get_rank() == 0:
-                wandb.log({f"labels_size at {utils.get_rank()}": label.size()[0]})
+            # label = torch.arange(logits_per_image.shape[0]).long().cuda() 
+            # if utils.get_rank() == 0:
+            #     wandb.log({f"labels_size at {utils.get_rank()}": label.size()[0]})
             # loss1 = loss_img(logits_per_image, label)
             # loss2 = loss_txt(logits_per_text, label)
-            # total_loss = (loss1+loss2)/2
-            l1, l2 = loss_dino(logits_per_text, logits_per_image)
-            #print(l1.size())
-            total_loss = ((l1+l2)/2).mean()
-            #total_loss.backward(retain_graph=True)
-            if utils.get_rank() == 0:
-                wandb.log({"mini_batch_loss": total_loss.item()})
-
-
+            # # total_loss = (loss1+loss2)/2
+            # l1, l2 = loss_dino(logits_per_text, logits_per_image)
+            # # print(l1.size())
+            # total_loss = ((l1.mean()+l2.mean())/2)
+            total_loss = criterion(logits_per_image, logits_per_text)
         if not math.isfinite(total_loss.item()):
             print("Loss is {}, stopping training".format(total_loss.item()), force=True)
             sys.exit(1)    
@@ -57,7 +54,8 @@ def train_one_epoch(clippo, data_loader, optimizer, lr_schedule, epoch, fp16_sca
             fp16_scaler.update()
 
         if utils.get_rank() == 0:
-            torch.save(clippo.state_dict(), 'clip.pt')
+            #pleases automate this bro 
+            torch.save(clippo.state_dict(), 'clippo_2k_dino.pt')
     # print(loss)
     # print("HELLO")
     #TODO: return logs 
@@ -71,6 +69,7 @@ def main(args):
     if utils.get_rank() == 0:
         wandb.init(
             # set the wandb project where this run will be logged
+            #set the experament name 
             project="my-awesome-project",
             
             # track hyperparameters and run metadata
@@ -87,7 +86,9 @@ def main(args):
                              std=[0.229, 0.224, 0.225]),
         transforms.Resize((32, 32))
     ])
-    dataset = Mnist(lambda x: torch.tensor(x), transform) #('mnist', download=True, transform=transform, target_transform=lambda x: torch.tensor(x, dtype=torch.long))#Mnist(transform, transform)
+    #automate this 
+    #dataset = Mnist(lambda x: torch.tensor(x), transform) #('mnist', download=True, transform=transform, target_transform=lambda x: torch.tensor(x, dtype=torch.long))#Mnist(transform, transform)
+    dataset = Mnist(transform, transform)
     sampler = torch.utils.data.DistributedSampler(dataset, shuffle=True)
     data_loader = torch.utils.data.DataLoader(
         dataset,
@@ -98,12 +99,16 @@ def main(args):
         drop_last=True,
     )
     print(f"Data loaded: there are {len(dataset)} images.")
-    clippo = CLIP()
+    #automate this 
+    #clippo = CLIP()
+    clippo = CLIPPO()
     clippo = clippo.cuda() 
     if utils.has_batchnorms(clippo):
         clippo = nn.SyncBatchNorm.convert_sync_batchnorm(clippo)
 
-    optimizer = torch.optim.AdamW(clippo.parameters())
+    optimizer = torch.optim.AdamW(clippo.parameters(), 
+                                  lr=args.lr * (args.batch_size_per_gpu * utils.get_world_size()) / 256.,  # linear scaling rule
+                                  )
     # for mixed precision training
     fp16_scaler = None
     if args.use_fp16:
@@ -163,6 +168,6 @@ def get_args_parser():
 
 
 if __name__ == '__main__': 
-    parser = argparse.ArgumentParser('DINO', parents=[get_args_parser()])
+    parser = argparse.ArgumentParser('CLIPPO', parents=[get_args_parser()])
     args = parser.parse_args()
     main(args)

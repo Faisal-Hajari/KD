@@ -70,8 +70,28 @@ class Mnist(Dataset):
         image, text = self.data[index]
         if self.image_transforms: 
             image = self.image_transforms(image.convert('RGB'))  
-        #text = render_text(str(text), image_size=32).convert('RGB')
+        text = render_text(str(text), image_size=32).convert('RGB')
         if self.text_transfroms:
             text = self.text_transfroms(text)
         
         return image, text
+    
+
+class MnistTesting(Dataset): 
+    def __init__(self, text_transforms=None, image_transforms=None) -> None:
+        self.data = MNIST('mnist', download=True)
+        self.text_transfroms = text_transforms
+        self.image_transforms = image_transforms
+    
+    def __len__(self): 
+        return len(self.data)
+    
+    def __getitem__(self, index):
+        image, text = self.data[index]
+        if self.image_transforms: 
+            image = self.image_transforms(image.convert('RGB'))  
+        text_image = render_text(str(text), image_size=32).convert('RGB')
+        if self.text_transfroms:
+            text_image = self.text_transfroms(text_image)
+        
+        return image, text_image, text

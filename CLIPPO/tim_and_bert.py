@@ -48,46 +48,35 @@ class CLIP(nn.Module):
     def forward(self,text, image):
         image_features = self.image_encoder(image)
         text_features = self.text_encoder(text)
+        return image_features, text_features
+    
+# this should be moved tp losses.py 
+# class DINOLoss(nn.Module): 
+#     def __init__(self, out_dim, temp): 
+#         super(DINOLoss, self).__init__()
+#         self.temp = temp
+#         self.register_buffer("center", torch.zeros(1, out_dim))
+#         self.center_momentum = 0.9
+    
+#     def forward(self, text_logit, image_logit): 
+#         text_logit /= self.temp 
+#         image_logit /= self.temp 
 
-        return image_features/image_features.norm(dim=1, keepdim=True),\
-                text_features/text_features.norm(dim=1, keepdim=True)
-        all_image_feature = image_features#disco.Gather(image_features.contiguous())
-        all_text_feature = text_features#image_features#disco.Gather(image_features.contiguous())
+#         image_centered = F.softmax((image_logit - self.center), dim=-1)
+#         text_centered = F.softmax((text_logit - self.center), dim=-1)
+
+#         text_loss = torch.sum(-image_centered*F.log_softmax(text_logit, dim=-1), dim=-1)
+#         image_loss = torch.sum(-text_centered*F.log_softmax(image_logit, dim=-1), dim=-1) 
+#         self.update_center(torch.stack((text_logit, image_logit)))
         
+#         return text_loss, image_loss
     
-        # normalized features
-        all_image_feature = all_image_feature / all_image_feature.norm(dim=1, keepdim=True)
-        all_text_feature = all_text_feature / all_text_feature.norm(dim=1, keepdim=True)
-        
-        # cosine similarity as logits
-        rank = dist.get_rank()
-        bs = 90
-        logit_scale = self.logit_scale.exp()
-        # logits_per_image = logit_scale* all_image_feature[bs*rank:bs*(rank+1)] @ all_text_feature.t()
-        # logits_per_text = logit_scale * all_text_feature[bs*rank:bs*(rank+1)] @ all_image_feature.t()
-        logits_per_image = logit_scale* all_image_feature @ all_text_feature.t()
-        logits_per_text = logit_scale * all_text_feature @ all_image_feature.t()
-        temp = 1#1e-5
-        # shape = [global_batch_size, global_batch_size]
-        #logits_per_image <=> I
-        return logits_per_image/temp, logits_per_text/temp
-    
+#     @torch.no_grad()
+#     def update_center(self, output): 
+#         batch_center = torch.sum(output, dim=0, keepdim=True)
+#         dist.all_reduce(batch_center)
+#         batch_center = batch_center / (len(output) * dist.get_world_size())
+#         self.center = self.center * self.center_momentum + batch_center * (1 - self.center_momentum)
 
-class DINOLoss(nn.Module): 
-    def __init__(self, out_dim, temp): 
-        super(DINOLoss, self).__init__()
-        self.temp = temp
-        self.register_buffer("center", torch.zeros(1, out_dim))
-    
-    def forward(self, text_logit, image_logit): 
-        text_logit /= self.temp 
-        image_logit /= self.temp 
-
-        image_centered = F.softmax((image_logit - self.center), dim=-1)
-        text_centered = F.softmax((text_logit - self.center), dim=-1)
-
-        text_loss = torch.sum(-image_centered*F.log_softmax(text_logit, dim=-1), dim=-1)
-        image_loss = torch.sum(-text_centered*F.log_softmax(image_logit, dim=-1), dim=-1) 
-        return text_loss, image_loss
 
 
