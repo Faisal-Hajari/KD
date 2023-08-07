@@ -10,8 +10,7 @@ import wandb
 
 import utils
 from dataset import CC3M, Mnist, MNIST
-from network import CLIPPO
-from tim_and_bert import CLIP, DINOLoss
+from network import CLIPPO, CLIP
 
 def train_one_epoch(clippo, data_loader, optimizer, lr_schedule, epoch, fp16_scaler, args): 
     loss_img = nn.CrossEntropyLoss()
