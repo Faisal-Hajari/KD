@@ -11,29 +11,20 @@ import wandb
 import utils
 from dataset import CC3M, Mnist, MNIST
 from network import CLIPPO, CLIP
+from losses import ContrastiveLoss, DINOLoss
 
 def train_one_epoch(clippo, data_loader, optimizer, lr_schedule, epoch, fp16_scaler, args): 
-    loss_img = nn.CrossEntropyLoss()
-    loss_txt = nn.CrossEntropyLoss()
-    loss_dino = DINOLoss(2, 0.04).cuda()
+    if args.loss.lower() is "contrast":
+        crit = ContrastiveLoss(args.loss_temp)
+    else:
+        crit = DINOLoss(512, args.loss_temp, args.center_momentum)  
     for images, text in data_loader: 
         with torch.cuda.amp.autocast(fp16_scaler is not None):
             images = images.cuda() 
             text = text.cuda() 
-            #TODO: add discoCLip here. 
             logits_per_image, logits_per_text = clippo(image=images, text=text)
-            # should be moved to losses.py
-            # bs = 90 
-            # label = torch.arange(logits_per_image.shape[0]).long().cuda() 
-            # if utils.get_rank() == 0:
-            #     wandb.log({f"labels_size at {utils.get_rank()}": label.size()[0]})
-            # loss1 = loss_img(logits_per_image, label)
-            # loss2 = loss_txt(logits_per_text, label)
-            # # total_loss = (loss1+loss2)/2
-            # l1, l2 = loss_dino(logits_per_text, logits_per_image)
-            # # print(l1.size())
-            # total_loss = ((l1.mean()+l2.mean())/2)
-            total_loss = criterion(logits_per_image, logits_per_text)
+            total_loss = crit(logits_per_image, logits_per_text)
+            
         if not math.isfinite(total_loss.item()):
             print("Loss is {}, stopping training".format(total_loss.item()), force=True)
             sys.exit(1)    
@@ -53,13 +44,12 @@ def train_one_epoch(clippo, data_loader, optimizer, lr_schedule, epoch, fp16_sca
             fp16_scaler.update()
 
         if utils.get_rank() == 0:
-            #pleases automate this bro 
-            torch.save(clippo.state_dict(), 'clippo_2k_dino.pt')
+            torch.save(clippo.state_dict(), f'{args.name}.pt')
     # print(loss)
     # print("HELLO")
     #TODO: return logs 
     # torch.cuda.synchronize()
-    # return loss.item()
+    return total_loss.item()
 
 def main(args): 
     utils.init_distributed_mode(args)
@@ -69,13 +59,13 @@ def main(args):
         wandb.init(
             # set the wandb project where this run will be logged
             #set the experament name 
-            project="my-awesome-project",
+            project="CLIPPO",
             
             # track hyperparameters and run metadata
             config={
                 "learning_rate": args.lr * (args.batch_size_per_gpu * utils.get_world_size()) / 256.,
-                "architecture": "CLIPPO",
-                "dataset": "CC3M_test",
+                "architecture": f"{args.arch}",
+                "dataset": "MNIST",
                 "epochs": args.epochs,
             }
         )
@@ -85,9 +75,13 @@ def main(args):
                              std=[0.229, 0.224, 0.225]),
         transforms.Resize((32, 32))
     ])
-    #automate this 
-    #dataset = Mnist(lambda x: torch.tensor(x), transform) #('mnist', download=True, transform=transform, target_transform=lambda x: torch.tensor(x, dtype=torch.long))#Mnist(transform, transform)
-    dataset = Mnist(transform, transform)
+    if args.arch.lower() is 'clip':
+        dataset = Mnist(lambda x: torch.tensor(x), transform)
+        clippo = CLIP()
+    else:
+        dataset = Mnist(transform, transform)
+        clippo = CLIPPO()
+
     sampler = torch.utils.data.DistributedSampler(dataset, shuffle=True)
     data_loader = torch.utils.data.DataLoader(
         dataset,
@@ -98,9 +92,6 @@ def main(args):
         drop_last=True,
     )
     print(f"Data loaded: there are {len(dataset)} images.")
-    #automate this 
-    #clippo = CLIP()
-    clippo = CLIPPO()
     clippo = clippo.cuda() 
     if utils.has_batchnorms(clippo):
         clippo = nn.SyncBatchNorm.convert_sync_batchnorm(clippo)
@@ -124,7 +115,7 @@ def main(args):
     start_epoch = 0 
     print("Starting clippo training !")
     for epoch in range(start_epoch, args.epochs):
-        # data_loader.sampler.set_epoch(epoch)
+        data_loader.sampler.set_epoch(epoch)
 
         # ============ training one epoch of CLIPPO ... ============
         loss = train_one_epoch(clippo, data_loader, optimizer,
@@ -133,13 +124,17 @@ def main(args):
         # ============ writing logs ... ============
         #TODO: add logs 
         # print(loss)
-        # if utils.get_rank() == 0:
-        #     torch.save(clippo.state_dict(), f'clippo{epoch}.pt')
+        if utils.get_rank() == 0:
+            print(f"[{epoch}] loss: {loss.item()}", end="\r")
+
 
 
 def get_args_parser():
     parser = argparse.ArgumentParser('CLIPPO', add_help=False)
-
+    parser.add_argument('--center_momentum', type=float, default=0.9, help="center_momentum for dino loss")
+    parser.add_argument('--arch', type=str, default="clippo", help="choose between clip and clippo")
+    parser.add_argument('--loss_temp', type=float, default=1, help="temp to be passed to the loss function")
+    parser.add_argument('--loss', type=str, default='contrast', help="choose between contrast and dino")
     parser.add_argument('--clip_grad', type=float, default=3.0, help="""Maximal parameter
         gradient norm if using gradient clipping. Clipping with norm .3 ~ 1.0 can
         help optimization for larger ViT architectures. 0 for disabling.""")

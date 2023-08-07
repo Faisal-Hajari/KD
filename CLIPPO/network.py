@@ -33,7 +33,7 @@ class CLIP(nn.Module):
         self.text_encoder = TextEncoder() 
         self.logit_scale = nn.Parameter(torch.ones([]) * np.log(1 / 0.07))
     
-    def forward(self,text, image):
+    def forward(self, image, text):
         image_features = self.image_encoder(image)
         text_features = self.text_encoder(text)
         return image_features, text_features
