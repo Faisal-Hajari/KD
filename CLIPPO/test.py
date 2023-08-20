@@ -11,9 +11,11 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import pandas as pd 
 from sklearn.decomposition import PCA
+import torchvision.transforms as T
+
 clippo = CLIPPO()
 clippo = clippo.cpu()
-clippo.load_state_dict(torch.load("/home/cv/Desktop/KD/CLIPPO/clippo_contrastive_150epoch5000b.pt")) 
+#clippo.load_state_dict(torch.load("/home/cv/Desktop/KD/CLIPPO/clippo_test_10000.pt")) 
 df = pd.read_csv("/home/cv/Desktop/cc3m_full_with_path.csv")
 #print(df)
 from torchvision import datasets, transforms
@@ -54,8 +56,14 @@ for images, _, labels in valid_loader:
     with torch.no_grad():
         # out, _= clippo(torch.tensor(labels).cuda(1), images.cuda(1))#.squeeze()
         out = clippo.image_proj(clippo.encoder(images.cuda(1)))
+        print((images[0].shape))
+        # transform = T.ToPILImage()
+        # img = transform(images[0])
+        # img.show()
+        # exit(-1)
         out /=out.norm(dim=1, keepdim=True)
         # out = out
+        # print(out.shpae)
         features.append(out)
         labels_ar.append(labels[None, :])
         # # out, _= clippo(torch.tensor(labels).cuda(1), images.cuda(1))#.squeeze()
@@ -67,10 +75,12 @@ for images, _, labels in valid_loader:
 
 features = torch.concat(features).cpu().detach().numpy()
 labels_ar = torch.concat(labels_ar, dim=1).detach().numpy()
+print(labels_ar[0][0:10])
+print(len(labels_ar[0]))
+print(labels_ar[0].shape)
 #tsne = TSNE().fit_transform(features)
 tx, ty = features[:,0], features[:,1]
-tx = (tx-np.min(tx)) / (np.max(tx) - np.min(tx))
-ty = (ty-np.min(ty)) / (np.max(ty) - np.min(ty))
+
 
 sns.scatterplot(
     x="tsne-2d-one", y="tsne-2d-two",
@@ -94,15 +104,14 @@ for _, images, labels in valid_loader:
         labels_ar.append(labels[None, :])
         # # out, _= clippo(torch.tensor(labels).cuda(1), images.cuda(1))#.squeeze()
         # out = clippo.text_proj(clippo.encoder(images.cuda(1)))
-        # out /=out.norm(dim=1, keepdim=True)
+        #  out /=out.norm(dim=1, keepdim=True)
 
 
 features = torch.concat(features).cpu().detach().numpy()
 labels_ar = torch.concat(labels_ar, dim=1).detach().numpy()
 #tsne = TSNE().fit_transform(features)
 tx, ty = features[:,0], features[:,1]
-tx = (tx-np.min(tx)) / (np.max(tx) - np.min(tx))
-ty = (ty-np.min(ty)) / (np.max(ty) - np.min(ty))
+
 
 sns.scatterplot(
     x="tsne-2d-one", y="tsne-2d-two",

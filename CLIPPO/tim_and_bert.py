@@ -22,15 +22,16 @@ class TextEncoder(nn.Module):
     def __init__(self) -> None:
         super(TextEncoder, self).__init__()
 
-        self.embedding = nn.Embedding(10, 256)
+        self.embedding = nn.Embedding(10, 128)
         self.MLP = nn.Sequential(*[
-            nn.Linear(256, 256), 
+            nn.Linear(128, 256), 
             nn.ReLU(), 
             nn.Linear(256, 512), 
             nn.ReLU(), 
             nn.Linear(512, 512)
         ])
         self.vocab = {str(i):i for i in range(10)}
+        print("im hereeeeeee")
     
     def forward(self, x): 
         # x = self.vocab[x]
