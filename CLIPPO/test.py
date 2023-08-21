@@ -15,9 +15,8 @@ import torchvision.transforms as T
 
 clippo = CLIPPO()
 clippo = clippo.cpu()
-#clippo.load_state_dict(torch.load("/home/cv/Desktop/KD/CLIPPO/clippo_test_10000.pt")) 
-df = pd.read_csv("/home/cv/Desktop/cc3m_full_with_path.csv")
-#print(df)
+clippo.load_state_dict(torch.load("clippo_test_0.pt")) 
+
 from torchvision import datasets, transforms
 transform = transforms.Compose([
         transforms.ToTensor(), 
@@ -26,26 +25,6 @@ transform = transforms.Compose([
         transforms.Resize((32, 32))
     ])
 dataset = TestMnist(transform, transform)
-
-def render_text(txt:str, image_size: int=224, font_size: int = 16, max_chars=768,
-                       background_brightness=127, text_brightness=0,
-                       lower=True, monospace=False, spacing=1, min_width=4,
-                       resize_method="area", max_width=28):
-    if len(txt)> max_chars:
-        txt = txt[:max_chars]
-    if lower: 
-        txt = txt.lower() 
-    wrapper = textwrap.TextWrapper(width=max_width)
-    lines = wrapper.wrap(txt) 
-    new_txt = ""
-    for line in lines: 
-        new_txt+= line+'\n'
-    image = Image.new("RGBA", (image_size*3,image_size*3), (background_brightness,background_brightness,background_brightness))
-    draw = ImageDraw.Draw(image)
-    font = ImageFont.truetype("/home/cv/Desktop/KD/CLIPPO/unifont-15.0.06.otf", font_size*3)
-    draw.text((0, 0), new_txt, (text_brightness,text_brightness,text_brightness), font=font, spacing=spacing)
-    img_resized = image.resize((image_size,image_size), Image.ANTIALIAS)
-    return img_resized
 
 features = []
 labels_ar = [] 
@@ -126,5 +105,5 @@ sns.scatterplot(
 plt.xlabel('feature x')
 plt.ylabel('feature y')
 plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0)
-
-plt.show()
+plt.savefig("fig.png")
+# plt.show()

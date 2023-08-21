@@ -12,6 +12,7 @@ import torch
 import torchvision
 import torchvision.transforms as T
 from PIL import Image
+import wandb
 import utils
 from dataset import CC3M, Mnist, MNIST, Mnist2
 from network import CLIPPO
@@ -22,46 +23,18 @@ def train_one_epoch(clippo, data_loader, optimizer, lr_schedule, epoch, fp16_sca
     loss_img = nn.CrossEntropyLoss()
     loss_txt = nn.CrossEntropyLoss()
     # loss_dino = DINOLoss(512, 0.04).cuda()
-    print("start looop")
     for images, text in data_loader: 
         with torch.cuda.amp.autocast(fp16_scaler is not None):
-            print("here text ="+""+str(text.shape))
-            print("here image ="+""+str(images.shape))
-            # tensor = torch.rand(3,300,700)
-            # print(tensor.shape)
-            # define a transform to convert a tensor to PIL image
-            transform = T.ToPILImage()
-            # convert the tensor to PIL image using above transform
-            #img = transform(text[63])
-            # display the PIL image
-
             images = images.cuda() 
             text = text.cuda() 
-            print("============================")
-            print(images.shape)
-            print(text.shape)
             #TODO: add discoCLip here. 
             logits_per_image, logits_per_text = clippo(image=images.squeeze(), text=text.squeeze())
-            print("here logits "+str((logits_per_image))+"   "+str((logits_per_text)))
-            # print(logits_per_text[0])
-            # exit(-1)
-            # img.show()
-            # exit(-1)
-            # bs = 90 
             label = torch.arange(logits_per_image.shape[0]).long().cuda() 
-            #if utils.get_rank() == 0:
-            #    wandb.log({f"labels_size at {utils.get_rank()}": label.size()[0]})
             loss1 = loss_img(logits_per_image, label)
             loss2 = loss_txt(logits_per_text, label)
             total_loss = (loss1+loss2)/2
-            print("loss is + "+str(total_loss))
-            # l1, l2 = loss_dino(logits_per_text, logits_per_image)
-            #print(l1.size())
-            # total_loss = ((l1+l2)/2).mean()
-            #total_loss.backward(retain_graph=True)
-            #if utils.get_rank() == 0:
-            #    wandb.log({"mini_batch_loss": total_loss.item()})
-
+            if utils.get_rank() == 0:
+               wandb.log({"mini_batch_loss": total_loss.item()})
 
         if not math.isfinite(total_loss.item()):
             print("Loss is {}, stopping training".format(total_loss.item()), force=True)
@@ -82,30 +55,27 @@ def train_one_epoch(clippo, data_loader, optimizer, lr_schedule, epoch, fp16_sca
             fp16_scaler.update()
 
         if utils.get_rank() == 0:
-            torch.save(clippo.state_dict(), 'clippo_test.pt')
-
-    # print("HELLO")
+            torch.save(clippo.state_dict(), 'clippo_test_small.pt')
     #TODO: return logs 
     # torch.cuda.synchronize()
-    # return loss.item()
 
 def main(args): 
     utils.init_distributed_mode(args)
     utils.fix_random_seeds(args.seed)
     cudnn.benchmark = True
-    # if utils.get_rank() == 0:
-    #     wandb.init(
-    #         # set the wandb project where this run will be logged
-    #         project="my-awesome-project",
+    if utils.get_rank() == 0:
+        wandb.init(
+            # set the wandb project where this run will be logged
+            project="my-awesome-project",
             
-    #         # track hyperparameters and run metadata
-    #         config={
-    #             "learning_rate": args.lr * (args.batch_size_per_gpu * utils.get_world_size()) / 256.,
-    #             "architecture": "CLIPPO",
-    #             "dataset": "CC3M_test",
-    #             "epochs": args.epochs,
-    #         }
-    #     )
+            # track hyperparameters and run metadata
+            config={
+                "learning_rate": args.lr * (args.batch_size_per_gpu * utils.get_world_size()) / 256.,
+                "architecture": "CLIPPO",
+                "dataset": "CC3M_test",
+                "epochs": args.epochs,
+            }
+        )
     transform = transforms.Compose([
         transforms.ToTensor(), 
         transforms.Normalize(mean=[0.485, 0.456, 0.406],
@@ -113,13 +83,8 @@ def main(args):
         transforms.Resize((32, 32))
     ])
 
-    print('before #####################################' )
     dataset = Mnist2(transform, transform) #('mnist', download=True, transform=transform, target_transform=lambda x: torch.tensor(x, dtype=torch.long))#Mnist(transform, transform)
-    print("here afte +++++++++++++++++++++++++ ")
-    print("leng is "+ str(len(dataset)))
-    # print(dataset)
     sampler = torch.utils.data.DistributedSampler(dataset, shuffle=False)
-    #sampler = OversamplingWrapper(dataset)
     data_loader = torch.utils.data.DataLoader(
         dataset,
         sampler=sampler,
@@ -128,9 +93,6 @@ def main(args):
         pin_memory=True,
         drop_last=True,
     )
-    print(f"Data loaded: there are {len(dataset)} images.")
-    print(f"Data loaded: there areeeeee {len(data_loader)} images.")
-    print(type(dataset))
     clippo = CLIPPO()
     clippo = clippo.cuda() 
     if utils.has_batchnorms(clippo):
@@ -165,24 +127,6 @@ def main(args):
         # print(loss)
         # if utils.get_rank() == 0:
         #     torch.save(clippo.state_dict(), f'clippo{epoch}.pt')
-
-# class OversamplingWrapper(torch.utils.data.Dataset):
-#     def __init__(self, folder_dataset, oversampling_size=1000):
-#         self.folder_dataset = folder_dataset
-#         self.oversampling_size = oversampling_size
-#         self.num_classes = len(folder_dataset.classes)
-
-#         self.class_idx_to_sample_ids = {i: [] for i in range(self.num_classes)}
-#         for idx, (_, class_id) in enumerate(folder_dataset.samples):
-#             self.class_idx_to_sample_ids[class_id].append(idx)
-
-#     def __len__(self):
-#         return self.num_classes * self.oversampling_size
-
-#     def __getitem__(self, index):
-#         class_id = index % self.num_classes
-#         sample_idx = Random.sample(self.class_idx_to_sample_ids[class_id], 1)
-#         return self.folder_dataset[sample_idx[0]]
 
 def get_args_parser():
     parser = argparse.ArgumentParser('CLIPPO', add_help=False)

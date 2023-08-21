@@ -12,7 +12,8 @@ import matplotlib.pyplot as plt
 class CLIPPO(nn.Module): 
     def __init__(self): 
         super(CLIPPO, self).__init__()
-        self.encoder = timm.create_model('resnet18', pretrained=True, num_classes=0)
+        #self.encoder = timm.create_model('resnet18', pretrained=True, num_classes=0)
+        self.encoder = nn.Sequential(*[nn.Conv2d(3, 32, 3), nn.ReLU(), nn.Conv2d(32, 64, 3), nn.ReLU(), nn.Flatten(), nn.AdaptiveMaxPool1d(124), nn.Linear(124, 512)])
         self.logit_scale = nn.Parameter(torch.ones([]) * np.log(1 / 0.07))
         projection_input = 512#768
         # 4 x 64 = 256

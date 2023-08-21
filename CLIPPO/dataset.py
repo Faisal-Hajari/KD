@@ -25,7 +25,7 @@ def render_text(txt:str, image_size: int=224, font_size: int = 16, max_chars=768
         new_txt+= line+'\n'
     image = Image.new("RGBA", (image_size*3,image_size*3), (background_brightness,background_brightness,background_brightness))
     draw = ImageDraw.Draw(image)
-    font = ImageFont.truetype("/home/cv/Desktop/KD/CLIPPO/unifont-15.0.06.otf", font_size*3)
+    font = ImageFont.truetype("unifont-15.0.06.otf", font_size*3)
     draw.text((0, 0), new_txt, (text_brightness,text_brightness,text_brightness), font=font, spacing=spacing)
     img_resized = image.resize((image_size,image_size), Image.ANTIALIAS)
     return img_resized
@@ -118,17 +118,17 @@ class Mnist2(Dataset):
         return 5421
     
     def __getitem__(self, index):
-        print('im in ----------------------------------------------')
+        # print('im in ----------------------------------------------')
         #print(type(index))
         
-        with open('/home/cv/Desktop/KD/CLIPPO/test.csv', 'r') as csv_file:
+        with open('test.csv', 'r') as csv_file:
             mycsv = csv.reader(csv_file)
             mycsv = list(mycsv)
             indeex = mycsv[index]
             images, texts =[],[]
             for i in mycsv[index]:
                 image, text = self.data[int(i)]
-                print("text ="+ str(text))
+                # print("text ="+ str(text))
                 if self.image_transforms: 
                     image = self.image_transforms(image.convert('RGB'))  
                 text = render_text(str(text), image_size=32).convert('RGB')
