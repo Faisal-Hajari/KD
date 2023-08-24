@@ -28,6 +28,8 @@ def render_text(txt:str, image_size: int=224, font_size: int = 16, max_chars=768
     font = ImageFont.truetype("unifont-15.0.06.otf", font_size*3)
     draw.text((0, 0), new_txt, (text_brightness,text_brightness,text_brightness), font=font, spacing=spacing)
     img_resized = image.resize((image_size,image_size), Image.ANTIALIAS)
+    # img_resized.show()
+    # exit(-1)
     return img_resized
 
 class CC3M(Dataset):

@@ -33,8 +33,9 @@ def train_one_epoch(clippo, data_loader, optimizer, lr_schedule, epoch, fp16_sca
             loss1 = loss_img(logits_per_image, label)
             loss2 = loss_txt(logits_per_text, label)
             total_loss = (loss1+loss2)/2
-            if utils.get_rank() == 0:
-               wandb.log({"mini_batch_loss": total_loss.item()})
+            print(total_loss)
+            # if utils.get_rank() == 0:
+            #    wandb.log({"mini_batch_loss": total_loss.item()})
 
         if not math.isfinite(total_loss.item()):
             print("Loss is {}, stopping training".format(total_loss.item()), force=True)
@@ -55,7 +56,7 @@ def train_one_epoch(clippo, data_loader, optimizer, lr_schedule, epoch, fp16_sca
             fp16_scaler.update()
 
         if utils.get_rank() == 0:
-            torch.save(clippo.state_dict(), 'clippo_test_small.pt')
+            torch.save(clippo.state_dict(), 'clippoo.pt')
     #TODO: return logs 
     # torch.cuda.synchronize()
 
@@ -63,19 +64,19 @@ def main(args):
     utils.init_distributed_mode(args)
     utils.fix_random_seeds(args.seed)
     cudnn.benchmark = True
-    if utils.get_rank() == 0:
-        wandb.init(
-            # set the wandb project where this run will be logged
-            project="my-awesome-project",
+    # if utils.get_rank() == 0:
+    #     wandb.init(
+    #         # set the wandb project where this run will be logged
+    #         project="my-awesome-project",
             
-            # track hyperparameters and run metadata
-            config={
-                "learning_rate": args.lr * (args.batch_size_per_gpu * utils.get_world_size()) / 256.,
-                "architecture": "CLIPPO",
-                "dataset": "CC3M_test",
-                "epochs": args.epochs,
-            }
-        )
+    #         # track hyperparameters and run metadata
+    #         config={
+    #             "learning_rate": args.lr * (args.batch_size_per_gpu * utils.get_world_size()) / 256.,
+    #             "architecture": "CLIPPO",
+    #             "dataset": "CC3M_test",
+    #             "epochs": args.epochs,
+    #         }
+    #     )
     transform = transforms.Compose([
         transforms.ToTensor(), 
         transforms.Normalize(mean=[0.485, 0.456, 0.406],
@@ -83,7 +84,7 @@ def main(args):
         transforms.Resize((32, 32))
     ])
 
-    dataset = Mnist2(transform, transform) #('mnist', download=True, transform=transform, target_transform=lambda x: torch.tensor(x, dtype=torch.long))#Mnist(transform, transform)
+    dataset = Mnist(transform, transform) #('mnist', download=True, transform=transform, target_transform=lambda x: torch.tensor(x, dtype=torch.long))#Mnist(transform, transform)
     sampler = torch.utils.data.DistributedSampler(dataset, shuffle=False)
     data_loader = torch.utils.data.DataLoader(
         dataset,
@@ -118,10 +119,10 @@ def main(args):
         # data_loader.sampler.set_epoch(epoch)
 
         # ============ training one epoch of CLIPPO ... ============
-        
+        print("before train ")
         loss = train_one_epoch(clippo, data_loader, optimizer,
                         lr_schedule, epoch, fp16_scaler, args)
-        
+        print("losss",loss)
         # ============ writing logs ... ============
         #TODO: add logs 
         # print(loss)
@@ -135,13 +136,13 @@ def get_args_parser():
         gradient norm if using gradient clipping. Clipping with norm .3 ~ 1.0 can
         help optimization for larger ViT architectures. 0 for disabling.""")
     parser.add_argument('--seed', default=0, type=int, help='Random seed.')
-    parser.add_argument('--batch_size_per_gpu', default=1, type=int,
+    parser.add_argument('--batch_size_per_gpu', default=64, type=int,
         help='Per-GPU batch-size : number of distinct images loaded on one GPU.')
-    parser.add_argument("--lr", default=0.001, type=float, help="""Learning rate at the end of
+    parser.add_argument("--lr", default=0.0001, type=float, help="""Learning rate at the end of
         linear warmup (highest LR used during training). The learning rate is linearly scaled
         with the batch size, and specified here for a reference batch size of 256.""")
-    parser.add_argument('--epochs', default=10000, type=int, help='Number of epochs of training.')
-    parser.add_argument("--warmup_epochs", default=100, type=int,
+    parser.add_argument('--epochs', default=1000, type=int, help='Number of epochs of training.')
+    parser.add_argument("--warmup_epochs", default=50, type=int,
         help="Number of epochs for the linear learning-rate warm up.") # with the actual 100? or 150?
     parser.add_argument('--min_lr', type=float, default=1e-6, help="""Target LR at the
         end of optimization. We use a cosine LR schedule with linear warmup.""")
