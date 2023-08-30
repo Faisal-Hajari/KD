@@ -15,7 +15,7 @@ import torchvision.transforms as T
 
 clippo = CLIPPO()
 clippo = clippo.cpu()
-clippo.load_state_dict(torch.load("clippo_test_0.pt")) 
+clippo.load_state_dict(torch.load("clippo_test_small.pt"), strict=False) 
 
 from torchvision import datasets, transforms
 transform = transforms.Compose([
@@ -34,7 +34,7 @@ valid_loader = torch.utils.data.DataLoader(dataset, 6000, shuffle=False, num_wor
 for images, _, labels in valid_loader: 
     with torch.no_grad():
         # out, _= clippo(torch.tensor(labels).cuda(1), images.cuda(1))#.squeeze()
-        out = clippo.image_proj(clippo.encoder(images.cuda(1)))
+        out = clippo.proj(clippo.encoder(images.cuda(1)))
         print((images[0].shape))
         # transform = T.ToPILImage()
         # img = transform(images[0])
@@ -76,7 +76,7 @@ labels_ar = []
 for _, images, labels in valid_loader: 
     with torch.no_grad():
         # out, _= clippo(torch.tensor(labels).cuda(1), images.cuda(1))#.squeeze()
-        out = clippo.image_proj(clippo.encoder(images.cuda(1)))
+        out = clippo.proj(clippo.encoder(images.cuda(1)))
         out /=out.norm(dim=1, keepdim=True)
         # out = out
         features.append(out)
@@ -105,5 +105,5 @@ sns.scatterplot(
 plt.xlabel('feature x')
 plt.ylabel('feature y')
 plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0)
-plt.savefig("fig.png")
+plt.savefig("fig_0.png")
 # plt.show()

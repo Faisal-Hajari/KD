@@ -17,22 +17,29 @@ import utils
 from dataset import CC3M, Mnist, MNIST, Mnist2
 from network import CLIPPO
 from tim_and_bert import CLIP, DINOLoss
+from losses import ClipLoss
 
-def train_one_epoch(clippo, data_loader, optimizer, lr_schedule, epoch, fp16_scaler, args): 
+def average_grad(model:nn.Module):
+    size = utils.get_world_size()
+    for name, p in model.named_parameters():
+        if p.grad is not None:
+            p.grad.data.divide_(size)
 
-    loss_img = nn.CrossEntropyLoss()
-    loss_txt = nn.CrossEntropyLoss()
-    # loss_dino = DINOLoss(512, 0.04).cuda()
-    for images, text in data_loader: 
+def train_one_epoch(network, data_loader, optimizer, lr_schedule, epoch, fp16_scaler, args): 
+    loss = ClipLoss()
+    epoch_loss = 0.0 
+    for it, (images, text) in enumerate(data_loader): 
+
+        it = len(data_loader) * epoch + it
+        for i, param_group in enumerate(optimizer.param_groups):
+            param_group["lr"] = lr_schedule[it]
+            
+
         with torch.cuda.amp.autocast(fp16_scaler is not None):
             images = images.cuda() 
             text = text.cuda() 
-            #TODO: add discoCLip here. 
-            logits_per_image, logits_per_text = clippo(image=images.squeeze(), text=text.squeeze())
-            label = torch.arange(logits_per_image.shape[0]).long().cuda() 
-            loss1 = loss_img(logits_per_image, label)
-            loss2 = loss_txt(logits_per_text, label)
-            total_loss = (loss1+loss2)/2
+            image_features, text_features, logit_scale = network(image=images.squeeze(), text=text.squeeze())
+            total_loss= loss(image_features, text_features, logit_scale)
             if utils.get_rank() == 0:
                wandb.log({"mini_batch_loss": total_loss.item()})
 
@@ -42,22 +49,26 @@ def train_one_epoch(clippo, data_loader, optimizer, lr_schedule, epoch, fp16_sca
         
         optimizer.zero_grad()
         if fp16_scaler is None:
+            total_loss.retain_grad()
             total_loss.backward(retain_graph=True)
+            average_grad(network)
             if args.clip_grad:
-                param_norms = utils.clip_gradients(clippo, args.clip_grad)
+                param_norms = utils.clip_gradients(network, args.clip_grad)
             optimizer.step()
         else: 
             fp16_scaler.scale(total_loss).backward(retain_graph=True)
+            average_grad(network)
             if args.clip_grad:
                 fp16_scaler.unscale_(optimizer)  # unscale the gradients of optimizer's assigned params in-place
-                param_norms = utils.clip_gradients(clippo, args.clip_grad)
+                param_norms = utils.clip_gradients(network, args.clip_grad)
             fp16_scaler.step(optimizer)
             fp16_scaler.update()
 
         if utils.get_rank() == 0:
-            torch.save(clippo.state_dict(), 'clippo_test_small.pt')
-    #TODO: return logs 
-    # torch.cuda.synchronize()
+            torch.save(network.module.state_dict(), f'{args.project_name}.pt')
+        epoch_loss += total_loss.item()
+
+    return epoch_loss/len(data_loader)
 
 def main(args): 
     utils.init_distributed_mode(args)
@@ -66,13 +77,13 @@ def main(args):
     if utils.get_rank() == 0:
         wandb.init(
             # set the wandb project where this run will be logged
-            project="my-awesome-project",
+            project=args.project_name,
             
             # track hyperparameters and run metadata
             config={
                 "learning_rate": args.lr * (args.batch_size_per_gpu * utils.get_world_size()) / 256.,
                 "architecture": "CLIPPO",
-                "dataset": "CC3M_test",
+                "dataset": "MNIST",
                 "epochs": args.epochs,
             }
         )
@@ -82,9 +93,8 @@ def main(args):
                              std=[0.229, 0.224, 0.225]),
         transforms.Resize((32, 32))
     ])
-
-    dataset = Mnist2(transform, transform) #('mnist', download=True, transform=transform, target_transform=lambda x: torch.tensor(x, dtype=torch.long))#Mnist(transform, transform)
-    sampler = torch.utils.data.DistributedSampler(dataset, shuffle=False)
+    dataset = Mnist(transform, transform)
+    sampler = torch.utils.data.DistributedSampler(dataset, shuffle=True)
     data_loader = torch.utils.data.DataLoader(
         dataset,
         sampler=sampler,
@@ -93,44 +103,49 @@ def main(args):
         pin_memory=True,
         drop_last=True,
     )
-    clippo = CLIPPO()
-    clippo = clippo.cuda() 
-    if utils.has_batchnorms(clippo):
-        clippo = nn.SyncBatchNorm.convert_sync_batchnorm(clippo)
+    network = CLIPPO()
+    network = network.cuda() 
+    if utils.has_batchnorms(network):
+        network = nn.SyncBatchNorm.convert_sync_batchnorm(network)
 
-    optimizer = torch.optim.AdamW(clippo.parameters())
+    network = nn.DataParallel(network, device_ids=[args.gpu])
+    optimizer = torch.optim.AdamW(network.parameters())
     # for mixed precision training
     fp16_scaler = None
     if args.use_fp16:
         fp16_scaler = torch.cuda.amp.GradScaler()
 
+     # ============ init schedulers ... ============
     lr_schedule = utils.cosine_scheduler(
         args.lr * (args.batch_size_per_gpu * utils.get_world_size()) / 256.,  # linear scaling rule
         args.min_lr,
         args.epochs, len(data_loader),
         warmup_epochs=args.warmup_epochs,
     )
+
     print(f"model and optimizer are ready.")   
     #TODO: add option for resume training. 
     start_epoch = 0 
-    print("Starting clippo training !")
+    print("Starting network training !")
+    torch.autograd.set_detect_anomaly(True)
     for epoch in range(start_epoch, args.epochs):
-        # data_loader.sampler.set_epoch(epoch)
+        data_loader.sampler.set_epoch(epoch)
 
-        # ============ training one epoch of CLIPPO ... ============
+        # ============ training one epoch of network ... ============
         
-        loss = train_one_epoch(clippo, data_loader, optimizer,
+        loss = train_one_epoch(network, data_loader, optimizer,
                         lr_schedule, epoch, fp16_scaler, args)
         
         # ============ writing logs ... ============
         #TODO: add logs 
         # print(loss)
-        # if utils.get_rank() == 0:
-        #     torch.save(clippo.state_dict(), f'clippo{epoch}.pt')
+        if utils.get_rank() == 0:
+            print(f"epoch: {epoch}: {loss}")
 
 def get_args_parser():
     parser = argparse.ArgumentParser('CLIPPO', add_help=False)
 
+    parser.add_argument('--project_name', type=str, default='clippo')
     parser.add_argument('--clip_grad', type=float, default=3.0, help="""Maximal parameter
         gradient norm if using gradient clipping. Clipping with norm .3 ~ 1.0 can
         help optimization for larger ViT architectures. 0 for disabling.""")
@@ -141,7 +156,7 @@ def get_args_parser():
         linear warmup (highest LR used during training). The learning rate is linearly scaled
         with the batch size, and specified here for a reference batch size of 256.""")
     parser.add_argument('--epochs', default=10000, type=int, help='Number of epochs of training.')
-    parser.add_argument("--warmup_epochs", default=100, type=int,
+    parser.add_argument("--warmup_epochs", default=2, type=int,
         help="Number of epochs for the linear learning-rate warm up.") # with the actual 100? or 150?
     parser.add_argument('--min_lr', type=float, default=1e-6, help="""Target LR at the
         end of optimization. We use a cosine LR schedule with linear warmup.""")
@@ -158,6 +173,6 @@ def get_args_parser():
 
 
 if __name__ == '__main__': 
-    parser = argparse.ArgumentParser('DINO', parents=[get_args_parser()])
+    parser = argparse.ArgumentParser('CLIPPO', parents=[get_args_parser()])
     args = parser.parse_args()
     main(args)

@@ -74,10 +74,6 @@ class Mnist(Dataset):
     
     def __getitem__(self, index):
         image, text = self.data[index]
-        # print(index)
-        # print("len is : "+ str(self.data[0][1]))
-        # exit(-1)
-
         if self.image_transforms: 
             image = self.image_transforms(image.convert('RGB'))  
         text = render_text(str(text), image_size=32).convert('RGB')
@@ -139,28 +135,3 @@ class Mnist2(Dataset):
                 texts.append(text)
 
             return torch.stack(images),torch.stack(texts)
-
-
-
-
-            print("here index ="+str(indeex))
-
-        # image, text = self.data[indeex]
-        # print("here is the content ="+ str(text))
-        # print('index'+str((index)))
-        # #print(type(image))
-        # print('text'+str(type(text)))
-        # print('image '+str(type(image)))
-        # if self.image_transforms: 
-        #     image = self.image_transforms(image.convert('RGB'))  
-        # text = render_text(str(text), image_size=32).convert('RGB')
-        # if self.text_transfroms:
-        #     text = self.text_transfroms(text)
-
-        # image.show()
-        #print("image len is ",(image))
-        #print(index)
-        print('im out ----------------------------------------------')
-        tmp=tmp+1
-        tmp2=tmp2+1
-        return image, text

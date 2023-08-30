@@ -6,7 +6,7 @@ from torch import nn
 from torch.nn import functional as F
 import timm 
 import numpy as np
-import disco
+# import disco
 import torch
 import torch.distributed as dist
 
