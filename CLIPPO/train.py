@@ -17,7 +17,7 @@ import utils
 from dataset import CC3M, Mnist, MNIST, Mnist2
 from network import CLIPPO
 from tim_and_bert import CLIP, DINOLoss
-from losses import ClipLoss
+from losses import *
 
 def average_grad(model:nn.Module):
     size = utils.get_world_size()
@@ -27,6 +27,7 @@ def average_grad(model:nn.Module):
 
 def train_one_epoch(network, data_loader, optimizer, lr_schedule, epoch, fp16_scaler, args): 
     loss = ClipLoss()
+    # loss = ArcCLIP()
     epoch_loss = 0.0 
     for it, (images, text) in enumerate(data_loader): 
 
@@ -39,7 +40,7 @@ def train_one_epoch(network, data_loader, optimizer, lr_schedule, epoch, fp16_sc
             images = images.cuda() 
             text = text.cuda() 
             image_features, text_features, logit_scale = network(image=images.squeeze(), text=text.squeeze())
-            total_loss= loss(image_features, text_features, logit_scale)
+            total_loss = loss(image_features, text_features, logit_scale)
             if utils.get_rank() == 0:
                wandb.log({"mini_batch_loss": total_loss.item()})
 
@@ -51,13 +52,13 @@ def train_one_epoch(network, data_loader, optimizer, lr_schedule, epoch, fp16_sc
         if fp16_scaler is None:
             total_loss.retain_grad()
             total_loss.backward(retain_graph=True)
-            average_grad(network)
+            # average_grad(network)
             if args.clip_grad:
                 param_norms = utils.clip_gradients(network, args.clip_grad)
             optimizer.step()
         else: 
             fp16_scaler.scale(total_loss).backward(retain_graph=True)
-            average_grad(network)
+            # average_grad(network)
             if args.clip_grad:
                 fp16_scaler.unscale_(optimizer)  # unscale the gradients of optimizer's assigned params in-place
                 param_norms = utils.clip_gradients(network, args.clip_grad)
@@ -127,12 +128,10 @@ def main(args):
     #TODO: add option for resume training. 
     start_epoch = 0 
     print("Starting network training !")
-    torch.autograd.set_detect_anomaly(True)
     for epoch in range(start_epoch, args.epochs):
         data_loader.sampler.set_epoch(epoch)
 
         # ============ training one epoch of network ... ============
-        
         loss = train_one_epoch(network, data_loader, optimizer,
                         lr_schedule, epoch, fp16_scaler, args)
         
@@ -150,7 +149,7 @@ def get_args_parser():
         gradient norm if using gradient clipping. Clipping with norm .3 ~ 1.0 can
         help optimization for larger ViT architectures. 0 for disabling.""")
     parser.add_argument('--seed', default=0, type=int, help='Random seed.')
-    parser.add_argument('--batch_size_per_gpu', default=1, type=int,
+    parser.add_argument('--batch_size_per_gpu', default=64, type=int,
         help='Per-GPU batch-size : number of distinct images loaded on one GPU.')
     parser.add_argument("--lr", default=0.001, type=float, help="""Learning rate at the end of
         linear warmup (highest LR used during training). The learning rate is linearly scaled
@@ -164,7 +163,7 @@ def get_args_parser():
         to use half precision for training. Improves training time and memory requirements,
         but can provoke instability and slight decay of performance. We recommend disabling
         mixed precision if the loss is unstable, if reducing the patch size or if training with bigger ViTs.""")
-    parser.add_argument('--num_workers', default=1, type=int, help='Number of data loading workers per GPU.')
+    parser.add_argument('--num_workers', default=4, type=int, help='Number of data loading workers per GPU.')
     parser.add_argument("--dist_url", default="env://", type=str, help="""url used to set up
         distributed training; see https://pytorch.org/docs/stable/distributed.html""")
     parser.add_argument("--local_rank", default=0, type=int, help="Please ignore and do not set this argument.")

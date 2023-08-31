@@ -2,3 +2,7 @@
 */*.ipynb
 */*.csv
 *.csv
+*/wandb/*
+*.png
+CLIPPO/testing.ipynb
+*.txt
