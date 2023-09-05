@@ -5,8 +5,18 @@ import pandas as pd
 import torch 
 import csv 
 import time
-
-
+import torch
+import torchvision
+import numpy as np
+import matplotlib.pyplot as plt
+import torch.nn as nn
+import torch.nn.functional as F
+from torchvision.datasets import CIFAR10
+from torchvision.transforms import ToTensor
+from torchvision.utils import make_grid
+from torch.utils.data.dataloader import DataLoader
+from torch.utils.data import random_split
+import torchvision.transforms as T
 
 
 
@@ -28,8 +38,8 @@ def render_text(txt:str, image_size: int=224, font_size: int = 16, max_chars=768
     font = ImageFont.truetype("unifont-15.0.06.otf", font_size*3)
     draw.text((0, 0), new_txt, (text_brightness,text_brightness,text_brightness), font=font, spacing=spacing)
     img_resized = image.resize((image_size,image_size), Image.ANTIALIAS)
-    # img_resized.show()
-    # exit(-1)
+    #img_resized.show()
+    #exit(-1)
     return img_resized
 
 class CC3M(Dataset):
@@ -64,7 +74,62 @@ class CC3M(Dataset):
     def __len__(self): 
         return len(self.df)
 
+from torchvision.datasets import CIFAR10
 from torchvision.datasets import MNIST
+
+class Cifar(Dataset): 
+    def __init__(self, text_transforms=None, image_transforms=None) -> None:
+        self.dataset = CIFAR10(root='data/', download=True)
+        self.text_transfroms = text_transforms
+        self.image_transforms = image_transforms
+        self.classes = self.dataset.classes
+        print(self.classes)
+    class_count = {}
+    def __len__(self): 
+        return len(self.dataset)
+
+    def __getitem__(self, index):
+        image, text = self.dataset[index]
+
+        #print("type image ", type(image))
+        if self.image_transforms: 
+            image = self.image_transforms(image.convert('RGB'))
+        if str(text)=='0':
+            text = render_text('airplane', image_size=224).convert('RGB')
+        elif str(text)=='1':
+            text = render_text('automobile', image_size=224).convert('RGB')
+        elif str(text) =='2':
+            text = render_text('bird', image_size=224).convert('RGB')
+        elif str(text) =='3':
+            text = render_text('cat', image_size=224).convert('RGB')
+        elif str(text)=='4':
+            text = render_text('deer', image_size=224).convert('RGB')
+        elif str(text) =='5':
+            text = render_text('dog', image_size=224).convert('RGB')
+        elif str(text) =='6':
+            text = render_text('frog', image_size=224).convert('RGB')
+        elif str(text) =='7':
+            text = render_text('horse', image_size=224).convert('RGB')
+        elif str(text)=='8':
+            text = render_text('ship', image_size=224).convert('RGB')
+        elif str(text) =='9':
+            text = render_text('truck', image_size=224).convert('RGB')
+        if self.text_transfroms:
+            text = self.text_transfroms(text)
+        # print("text ====", label)
+        # print(type(image))
+        # transform = T.ToPILImage()
+        # img = transform(image)
+        # img.show()
+        # exit(-1)
+        # for _, index in self.dataset:
+        #     label = self.classes[index]
+        #     if label not in self.class_count:
+        #         self.class_count[label] = 0
+        #     self.class_count[label] += 1
+        #     print(label)
+        return image, text
+
 class Mnist(Dataset): 
     def __init__(self, text_transforms=None, image_transforms=None) -> None:
         self.data = MNIST('mnist', download=True)
@@ -79,13 +144,12 @@ class Mnist(Dataset):
         # print(index)
         # print("len is : "+ str(self.data[0][1]))
         # exit(-1)
-
+        print("image type ",type(image))
         if self.image_transforms: 
             image = self.image_transforms(image.convert('RGB'))  
         text = render_text(str(text), image_size=32).convert('RGB')
         if self.text_transfroms:
             text = self.text_transfroms(text)
-        
         return image, text
 
 class TestMnist(Dataset): 
@@ -107,6 +171,64 @@ class TestMnist(Dataset):
         
         return image, txtimage, text
 
+
+class TestCifar(Dataset): 
+    def __init__(self, text_transforms=None, image_transforms=None) -> None:
+        self.data =  CIFAR10(root='data/', train=False)
+        self.text_transfroms = text_transforms
+        self.image_transforms = image_transforms
+    
+    def __len__(self): 
+        return len(self.data)
+    
+    def __getitem__(self, index):
+        image, text = self.data[index]
+        #   if str(text)=='0': 
+        #     text = 'airplane'
+        # elif str(text)=='1': 
+        #     text='automobile'
+        # elif str(text)=='2': 
+        #     text = 'bird'
+        # elif str(text)=='3': 
+        #     text='cat'
+        # elif str(text)=='4': 
+        #     text='deer'
+        # elif str(text)=='5': 
+        #     text = 'dog'
+        # elif str(text)=='6': 
+        #     text = 'frog'
+        # elif str(text)=='7': 
+        #     text = 'horse'
+        # elif str(text)=='8': 
+        #     text = 'ship'
+        # elif str(text)=='9': 
+        #     text = 'truck'
+        if self.image_transforms: 
+            image = self.image_transforms(image.convert('RGB'))  
+        if str(text)=='0': 
+            txtimage = render_text('airplane', image_size=224).convert('RGB')
+        elif str(text)=='1': 
+            txtimage = render_text('automobile', image_size=224).convert('RGB')
+        elif str(text)=='2': 
+            txtimage = render_text('bird', image_size=224).convert('RGB')
+        elif str(text)=='3': 
+            txtimage = render_text('cat', image_size=224).convert('RGB')
+        elif str(text)=='4': 
+            txtimage = render_text('deer', image_size=224).convert('RGB')
+        elif str(text)=='5': 
+            txtimage = render_text('dog', image_size=224).convert('RGB')
+        elif str(text)=='6': 
+            txtimage = render_text('frog', image_size=224).convert('RGB')
+        elif str(text)=='7': 
+            txtimage = render_text('horse', image_size=224).convert('RGB')
+        elif str(text)=='8': 
+            txtimage = render_text('ship', image_size=224).convert('RGB')
+        elif str(text)=='9': 
+            txtimage = render_text('truck', image_size=224).convert('RGB')
+        if self.text_transfroms:
+            txtimage = self.text_transfroms(txtimage)
+        
+        return image, txtimage, text
 class Mnist2(Dataset): 
     tmp=0
     tmp2=0
@@ -130,7 +252,7 @@ class Mnist2(Dataset):
             images, texts =[],[]
             for i in mycsv[index]:
                 image, text = self.data[int(i)]
-                # print("text ="+ str(text))
+                print("text ="+ str(text))
                 if self.image_transforms: 
                     image = self.image_transforms(image.convert('RGB'))  
                 text = render_text(str(text), image_size=32).convert('RGB')

@@ -15,22 +15,22 @@ import torchvision.transforms as T
 
 clippo = CLIPPO()
 clippo = clippo.cpu()
-clippo.load_state_dict(torch.load("clippo_test_small.pt")) 
+clippo.load_state_dict(torch.load("trash2.pt")) 
 
 from torchvision import datasets, transforms
 transform = transforms.Compose([
         transforms.ToTensor(), 
         transforms.Normalize(mean=[0.485, 0.456, 0.406],
                              std=[0.229, 0.224, 0.225]),
-        transforms.Resize((32, 32))
+        transforms.Resize((224, 224))
     ])
-dataset = TestMnist(transform, transform)
+dataset = TestCifar(transform, transform)
 
 features = []
 labels_ar = [] 
 clippo = clippo.cuda(1)
 clippo.eval() 
-valid_loader = torch.utils.data.DataLoader(dataset, 6000, shuffle=False, num_workers=32)
+valid_loader = torch.utils.data.DataLoader(dataset, 20000, shuffle=False, num_workers=32)
 for images, _, labels in valid_loader: 
     with torch.no_grad():
         # out, _= clippo(torch.tensor(labels).cuda(1), images.cuda(1))#.squeeze()
@@ -42,7 +42,8 @@ for images, _, labels in valid_loader:
         # exit(-1)
         out /=out.norm(dim=1, keepdim=True)
         # out = out
-        # print(out.shpae)
+        print(out.shape)
+        print(type(out))
         features.append(out)
         labels_ar.append(labels[None, :])
         # # out, _= clippo(torch.tensor(labels).cuda(1), images.cuda(1))#.squeeze()
@@ -57,8 +58,8 @@ labels_ar = torch.concat(labels_ar, dim=1).detach().numpy()
 # print(labels_ar[0][0:10])
 # print(len(labels_ar[0]))
 # print(labels_ar[0].shape)
-#tsne = TSNE().fit_transform(features)
-tx, ty = features[:,0], features[:,1]
+tsne = TSNE().fit_transform(features)
+tx, ty = tsne[:,0], tsne[:,1]
 
 
 sns.scatterplot(
@@ -90,8 +91,8 @@ for _, images, labels in valid_loader:
 
 features = torch.concat(features).cpu().detach().numpy()
 labels_ar = torch.concat(labels_ar, dim=1).detach().numpy()
-#tsne = TSNE().fit_transform(features)
-tx, ty = features[:,0], features[:,1]
+tsne = TSNE().fit_transform(features)
+tx, ty = tsne[:,0], tsne[:,1]
 
 sns.scatterplot(
     x="tsne-2d-one", y="tsne-2d-two",
@@ -106,5 +107,5 @@ print("here ",len(tx))
 plt.xlabel('feature x')
 plt.ylabel('feature y')
 plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0)
-plt.savefig("fig2.png")
+plt.savefig("figf.png")
 # plt.show()

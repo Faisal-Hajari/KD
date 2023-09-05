@@ -14,7 +14,7 @@ import torchvision.transforms as T
 from PIL import Image
 import wandb
 import utils
-from dataset import CC3M, Mnist, MNIST, Mnist2
+from dataset import  Cifar,Mnist
 from network import CLIPPO
 from tim_and_bert import CLIP, DINOLoss
 
@@ -56,7 +56,7 @@ def train_one_epoch(clippo, data_loader, optimizer, lr_schedule, epoch, fp16_sca
             fp16_scaler.update()
 
         if utils.get_rank() == 0:
-            torch.save(clippo.state_dict(), 'clippoo.pt')
+            torch.save(clippo.state_dict(), 'trash2.pt')
     #TODO: return logs 
     # torch.cuda.synchronize()
 
@@ -81,10 +81,11 @@ def main(args):
         transforms.ToTensor(), 
         transforms.Normalize(mean=[0.485, 0.456, 0.406],
                              std=[0.229, 0.224, 0.225]),
-        transforms.Resize((32, 32))
+        transforms.Resize((224, 224))
     ])
 
-    dataset = Mnist(transform, transform) #('mnist', download=True, transform=transform, target_transform=lambda x: torch.tensor(x, dtype=torch.long))#Mnist(transform, transform)
+    dataset = Cifar(transform, transform) #('mnist', download=True, transform=transform, target_transform=lambda x: torch.tensor(x, dtype=torch.long))#Mnist(transform, transform)
+
     sampler = torch.utils.data.DistributedSampler(dataset, shuffle=False)
     data_loader = torch.utils.data.DataLoader(
         dataset,
@@ -94,6 +95,7 @@ def main(args):
         pin_memory=True,
         drop_last=True,
     )
+    
     clippo = CLIPPO()
     clippo = clippo.cuda() 
     if utils.has_batchnorms(clippo):
@@ -136,7 +138,7 @@ def get_args_parser():
         gradient norm if using gradient clipping. Clipping with norm .3 ~ 1.0 can
         help optimization for larger ViT architectures. 0 for disabling.""")
     parser.add_argument('--seed', default=0, type=int, help='Random seed.')
-    parser.add_argument('--batch_size_per_gpu', default=64, type=int,
+    parser.add_argument('--batch_size_per_gpu', default=8, type=int,
         help='Per-GPU batch-size : number of distinct images loaded on one GPU.')
     parser.add_argument("--lr", default=0.0001, type=float, help="""Learning rate at the end of
         linear warmup (highest LR used during training). The learning rate is linearly scaled
@@ -153,7 +155,7 @@ def get_args_parser():
     parser.add_argument('--num_workers', default=1, type=int, help='Number of data loading workers per GPU.')
     parser.add_argument("--dist_url", default="env://", type=str, help="""url used to set up
         distributed training; see https://pytorch.org/docs/stable/distributed.html""")
-    parser.add_argument("--local_rank", default=0, type=int, help="Please ignore and do not set this argument.")
+    parser.add_argument("--local-rank", default=0, type=int, help="Please ignore and do not set this argument.")
 
     return parser
 
