@@ -1,0 +1,39 @@
+{
+    "train_micro_batch_size_per_gpu": 8,
+    "steps_per_print": 10,
+    
+    "zero_optimization": {
+        "stage": 0
+    },
+
+    "fp16": {
+        "enabled": false,
+        "loss_scale_window": 100
+    },
+
+    "prescale_gradients": false,
+    "wall_clock_breakdown": true,
+    "zero_allow_untested_optimizer": false,
+    "aio": {
+        "block_size": 1048576,
+        "queue_depth": 16,
+        "single_submit": false,
+        "overlap_events": true,
+        "thread_count": 2
+    },
+
+    "flops_profiler": {
+        "enabled": true,
+        "profile_step": 1,
+        "module_depth": -1,
+        "top_modules": 1,
+        "detailed": true,
+        "output_file": "outputs/flops_profiler/results.log"
+    },
+
+    "tensorboard": {
+        "enabled": true,
+        "output_path": "outputs/ds_tensorboard_logs/",
+        "job_name": "job_tensorboard"
+    }
+  }

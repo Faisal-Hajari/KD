@@ -18,13 +18,17 @@ from dataset import  Cifar,Mnist
 from network import CLIPPO
 from tim_and_bert import CLIP, DINOLoss
 
-def train_one_epoch(clippo, data_loader, optimizer, lr_schedule, epoch, fp16_scaler, args): 
+import deepspeed
+from deepspeed.ops.adam import FusedAdam
+from torch.utils.data import DistributedSampler, DataLoader
+
+def train_one_epoch(clippo, data_loader, optimizer, lr_schedule, epoch, args): 
 
     loss_img = nn.CrossEntropyLoss()
     loss_txt = nn.CrossEntropyLoss()
     # loss_dino = DINOLoss(512, 0.04).cuda()
     for images, text in data_loader: 
-        with torch.cuda.amp.autocast(fp16_scaler is not None):
+        with torch.cuda.amp.autocast(False):
             images = images.cuda() 
             text = text.cuda() 
             #TODO: add discoCLip here. 
@@ -42,18 +46,10 @@ def train_one_epoch(clippo, data_loader, optimizer, lr_schedule, epoch, fp16_sca
             sys.exit(1)    
         
         optimizer.zero_grad()
-        if fp16_scaler is None:
-            total_loss.backward(retain_graph=True)
-            if args.clip_grad:
-                param_norms = utils.clip_gradients(clippo, args.clip_grad)
-            optimizer.step()
-        else: 
-            fp16_scaler.scale(total_loss).backward(retain_graph=True)
-            if args.clip_grad:
-                fp16_scaler.unscale_(optimizer)  # unscale the gradients of optimizer's assigned params in-place
-                param_norms = utils.clip_gradients(clippo, args.clip_grad)
-            fp16_scaler.step(optimizer)
-            fp16_scaler.update()
+        total_loss.backward(retain_graph=True)
+        if args.clip_grad:
+            param_norms = utils.clip_gradients(clippo, args.clip_grad)
+        optimizer.step()
 
         if utils.get_rank() == 0:
             torch.save(clippo.state_dict(), 'trash2.pt')
@@ -61,7 +57,9 @@ def train_one_epoch(clippo, data_loader, optimizer, lr_schedule, epoch, fp16_sca
     # torch.cuda.synchronize()
 
 def main(args): 
-    utils.init_distributed_mode(args)
+    torch.cuda.set_device(args.local_rank)
+    device = torch.device("cuda", args.local_rank)
+    deepspeed.init_distributed()
     utils.fix_random_seeds(args.seed)
     cudnn.benchmark = True
     # if utils.get_rank() == 0:
@@ -86,8 +84,8 @@ def main(args):
 
     dataset = Cifar(transform, transform) #('mnist', download=True, transform=transform, target_transform=lambda x: torch.tensor(x, dtype=torch.long))#Mnist(transform, transform)
 
-    sampler = torch.utils.data.DistributedSampler(dataset, shuffle=False)
-    data_loader = torch.utils.data.DataLoader(
+    sampler = DistributedSampler(dataset, shuffle=False)
+    data_loader = DataLoader(
         dataset,
         sampler=sampler,
         batch_size=args.batch_size_per_gpu,
@@ -101,11 +99,8 @@ def main(args):
     if utils.has_batchnorms(clippo):
         clippo = nn.SyncBatchNorm.convert_sync_batchnorm(clippo)
 
-    optimizer = torch.optim.AdamW(clippo.parameters())
-    # for mixed precision training
-    fp16_scaler = None
-    if args.use_fp16:
-        fp16_scaler = torch.cuda.amp.GradScaler()
+    #optimizer = torch.optim.AdamW(clippo.parameters())
+    optimizer = FusedAdam(clippo.parameters(), args.lr * (args.batch_size_per_gpu * utils.get_world_size()) / 256.)
 
     lr_schedule = utils.cosine_scheduler(
         args.lr * (args.batch_size_per_gpu * utils.get_world_size()) / 256.,  # linear scaling rule
@@ -117,13 +112,22 @@ def main(args):
     #TODO: add option for resume training. 
     start_epoch = 0 
     print("Starting clippo training !")
+
+    clippo, optimizer, _, lr_schedule = deepspeed.initialize(
+        model=clippo,
+        optimizer=optimizer,
+        args=args,
+        lr_scheduler=lr_schedule,
+        dist_init_required=True
+    )
+
     for epoch in range(start_epoch, args.epochs):
         # data_loader.sampler.set_epoch(epoch)
 
         # ============ training one epoch of CLIPPO ... ============
         print("before train ")
         loss = train_one_epoch(clippo, data_loader, optimizer,
-                        lr_schedule, epoch, fp16_scaler, args)
+                        lr_schedule, epoch, args)
         print("losss",loss)
         # ============ writing logs ... ============
         #TODO: add logs 
@@ -148,19 +152,18 @@ def get_args_parser():
         help="Number of epochs for the linear learning-rate warm up.") # with the actual 100? or 150?
     parser.add_argument('--min_lr', type=float, default=1e-6, help="""Target LR at the
         end of optimization. We use a cosine LR schedule with linear warmup.""")
-    parser.add_argument('--use_fp16', type=utils.bool_flag, default=True, help="""Whether or not
-        to use half precision for training. Improves training time and memory requirements,
-        but can provoke instability and slight decay of performance. We recommend disabling
-        mixed precision if the loss is unstable, if reducing the patch size or if training with bigger ViTs.""")
     parser.add_argument('--num_workers', default=1, type=int, help='Number of data loading workers per GPU.')
     parser.add_argument("--dist_url", default="env://", type=str, help="""url used to set up
         distributed training; see https://pytorch.org/docs/stable/distributed.html""")
-    parser.add_argument("--local-rank", default=0, type=int, help="Please ignore and do not set this argument.")
+    parser.add_argument("--local_rank", default=0, type=int, help="Please ignore and do not set this argument.")
+
+    parser = deepspeed.add_config_arguments(parser)
 
     return parser
 
 
 if __name__ == '__main__': 
     parser = argparse.ArgumentParser('DINO', parents=[get_args_parser()])
+    #parser = deepspeed.add_config_arguments(parser)
     args = parser.parse_args()
     main(args)
