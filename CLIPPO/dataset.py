@@ -23,7 +23,7 @@ import torchvision.transforms as T
 def render_text(txt:str, image_size: int=224, font_size: int = 16, max_chars=768,
                        background_brightness=127, text_brightness=0,
                        lower=True, monospace=False, spacing=1, min_width=4,
-                       resize_method="area", max_width=28, font_name="unifont-15.0.06.otf"):
+                       resize_method="area", max_width=28, font_name="unifont-15.0.06.otf", noise=False):
     if len(txt)> max_chars:
         txt = txt[:max_chars]
     if lower: 
@@ -34,10 +34,28 @@ def render_text(txt:str, image_size: int=224, font_size: int = 16, max_chars=768
     for line in lines: 
         new_txt+= line+'\n'
     image = Image.new("RGBA", (image_size*3,image_size*3), (background_brightness,background_brightness,background_brightness))
+    
     draw = ImageDraw.Draw(image)
+    
     font = ImageFont.truetype(font_name, font_size*3)
     draw.text((0, 0), new_txt, (text_brightness,text_brightness,text_brightness), font=font, spacing=spacing)
     img_resized = image.resize((image_size,image_size))
+    
+    if noise:
+        output = np.copy(np.array(img_resized))
+
+        # add salt (white grain)
+        nb_salt = np.ceil(0.005 * output.size * 0.5)
+        coords = [np.random.randint(0, i - 1, int(nb_salt)) for i in output.shape]
+        output[coords] = 1
+
+        # add pepper (black grain)
+        nb_pepper = np.ceil(0.005 * output.size * 0.5)
+        coords = [np.random.randint(0, i - 1, int(nb_pepper)) for i in output.shape]
+        output[coords] = 0
+
+        img_resized = Image.fromarray(output)
+    
     #img_resized.show()
     #exit(-1)
     return img_resized
