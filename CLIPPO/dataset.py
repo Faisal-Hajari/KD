@@ -23,7 +23,7 @@ import torchvision.transforms as T
 def render_text(txt:str, image_size: int=224, font_size: int = 16, max_chars=768,
                        background_brightness=127, text_brightness=0,
                        lower=True, monospace=False, spacing=1, min_width=4,
-                       resize_method="area", max_width=28):
+                       resize_method="area", max_width=28, font_name="unifont-15.0.06.otf"):
     if len(txt)> max_chars:
         txt = txt[:max_chars]
     if lower: 
@@ -35,7 +35,7 @@ def render_text(txt:str, image_size: int=224, font_size: int = 16, max_chars=768
         new_txt+= line+'\n'
     image = Image.new("RGBA", (image_size*3,image_size*3), (background_brightness,background_brightness,background_brightness))
     draw = ImageDraw.Draw(image)
-    font = ImageFont.truetype("unifont-15.0.06.otf", font_size*3)
+    font = ImageFont.truetype(font_name, font_size*3)
     draw.text((0, 0), new_txt, (text_brightness,text_brightness,text_brightness), font=font, spacing=spacing)
     img_resized = image.resize((image_size,image_size))
     #img_resized.show()
@@ -77,7 +77,33 @@ class CC3M(Dataset):
 from torchvision.datasets import CIFAR10
 from torchvision.datasets import MNIST
 
+class NaiveCounter:
+    number = 0
+
+    def __add__(self, adder):
+        if self.number < 3:
+            self.number += adder
+            return self.number
+        else:
+            self.number = 0
+            return self.number
+
+
 class Cifar(Dataset): 
+    
+    fonts = ["deval.otf", "unifont-15.0.06.otf", "fcb.otf", "fcl.otf"]
+    airplane_font = NaiveCounter()
+    automobile_font = NaiveCounter()
+    bird_font = NaiveCounter()
+    cat_font = NaiveCounter()
+    deer_font = NaiveCounter()
+    dog_font = NaiveCounter()
+    frog_font = NaiveCounter()
+    horse_font = NaiveCounter()
+    ship_font = NaiveCounter()
+    truck_font = NaiveCounter()
+    
+
     def __init__(self, text_transforms=None, image_transforms=None) -> None:
         self.dataset = CIFAR10(root='data/', download=True)
         self.text_transfroms = text_transforms
@@ -85,6 +111,7 @@ class Cifar(Dataset):
         self.classes = self.dataset.classes
         print(self.classes)
     class_count = {}
+
     def __len__(self): 
         return len(self.dataset)
 
@@ -95,25 +122,25 @@ class Cifar(Dataset):
         if self.image_transforms: 
             image = self.image_transforms(image.convert('RGB'))
         if str(text)=='0':
-            text = render_text('airplane', image_size=224).convert('RGB')
+            text = render_text('airplane', image_size=224, font_name=self.fonts[self.airplane_font + 1]).convert('RGB')
         elif str(text)=='1':
-            text = render_text('automobile', image_size=224).convert('RGB')
+            text = render_text('automobile', image_size=224, font_name=self.fonts[self.automobile_font + 1]).convert('RGB')
         elif str(text) =='2':
-            text = render_text('bird', image_size=224).convert('RGB')
+            text = render_text('bird', image_size=224, font_name=self.fonts[self.bird_font + 1]).convert('RGB')
         elif str(text) =='3':
-            text = render_text('cat', image_size=224).convert('RGB')
+            text = render_text('cat', image_size=224, font_name=self.fonts[self.cat_font + 1]).convert('RGB')
         elif str(text)=='4':
-            text = render_text('deer', image_size=224).convert('RGB')
+            text = render_text('deer', image_size=224, font_name=self.fonts[self.deer_font + 1]).convert('RGB')
         elif str(text) =='5':
-            text = render_text('dog', image_size=224).convert('RGB')
+            text = render_text('dog', image_size=224, font_name=self.fonts[self.dog_font + 1]).convert('RGB')
         elif str(text) =='6':
-            text = render_text('frog', image_size=224).convert('RGB')
+            text = render_text('frog', image_size=224, font_name=self.fonts[self.frog_font + 1]).convert('RGB')
         elif str(text) =='7':
-            text = render_text('horse', image_size=224).convert('RGB')
+            text = render_text('horse', image_size=224, font_name=self.fonts[self.horse_font + 1]).convert('RGB')
         elif str(text)=='8':
-            text = render_text('ship', image_size=224).convert('RGB')
+            text = render_text('ship', image_size=224, font_name=self.fonts[self.ship_font + 1]).convert('RGB')
         elif str(text) =='9':
-            text = render_text('truck', image_size=224).convert('RGB')
+            text = render_text('truck', image_size=224, font_name=self.fonts[self.truck_font + 1]).convert('RGB')
         if self.text_transfroms:
             text = self.text_transfroms(text)
         # print("text ====", label)

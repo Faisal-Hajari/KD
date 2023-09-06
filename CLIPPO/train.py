@@ -40,19 +40,19 @@ def train_one_epoch(clippo, data_loader, optimizer, lr_schedule, epoch, args):
             print(total_loss)
             # if utils.get_rank() == 0:
             #    wandb.log({"mini_batch_loss": total_loss.item()})
-
         if not math.isfinite(total_loss.item()):
             print("Loss is {}, stopping training".format(total_loss.item()), force=True)
             sys.exit(1)    
         
-        optimizer.zero_grad()
-        total_loss.backward(retain_graph=True)
+        clippo.backward(total_loss)
         if args.clip_grad:
-            param_norms = utils.clip_gradients(clippo, args.clip_grad)
-        optimizer.step()
+            utils.clip_gradients(clippo, args.clip_grad)
+        optimizer.step()        
 
-        if utils.get_rank() == 0:
-            torch.save(clippo.state_dict(), 'trash2.pt')
+        """if utils.get_rank() == 0:
+            torch.save(clippo.state_dict(), 'trash2.pt')"""
+
+    clippo.tput_timer.update_epoch_count()
     #TODO: return logs 
     # torch.cuda.synchronize()
 
@@ -60,8 +60,13 @@ def main(args):
     torch.cuda.set_device(args.local_rank)
     device = torch.device("cuda", args.local_rank)
     deepspeed.init_distributed()
+
+
     utils.fix_random_seeds(args.seed)
     cudnn.benchmark = True
+
+    torch.distributed.barrier()
+
     # if utils.get_rank() == 0:
     #     wandb.init(
     #         # set the wandb project where this run will be logged
@@ -142,7 +147,7 @@ def get_args_parser():
         gradient norm if using gradient clipping. Clipping with norm .3 ~ 1.0 can
         help optimization for larger ViT architectures. 0 for disabling.""")
     parser.add_argument('--seed', default=0, type=int, help='Random seed.')
-    parser.add_argument('--batch_size_per_gpu', default=8, type=int,
+    parser.add_argument('--batch_size_per_gpu', default=24, type=int,
         help='Per-GPU batch-size : number of distinct images loaded on one GPU.')
     parser.add_argument("--lr", default=0.0001, type=float, help="""Learning rate at the end of
         linear warmup (highest LR used during training). The learning rate is linearly scaled
@@ -153,8 +158,6 @@ def get_args_parser():
     parser.add_argument('--min_lr', type=float, default=1e-6, help="""Target LR at the
         end of optimization. We use a cosine LR schedule with linear warmup.""")
     parser.add_argument('--num_workers', default=1, type=int, help='Number of data loading workers per GPU.')
-    parser.add_argument("--dist_url", default="env://", type=str, help="""url used to set up
-        distributed training; see https://pytorch.org/docs/stable/distributed.html""")
     parser.add_argument("--local_rank", default=0, type=int, help="Please ignore and do not set this argument.")
 
     parser = deepspeed.add_config_arguments(parser)
@@ -164,6 +167,5 @@ def get_args_parser():
 
 if __name__ == '__main__': 
     parser = argparse.ArgumentParser('DINO', parents=[get_args_parser()])
-    #parser = deepspeed.add_config_arguments(parser)
     args = parser.parse_args()
     main(args)
