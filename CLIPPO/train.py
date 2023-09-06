@@ -84,10 +84,10 @@ def main(args):
         transforms.ToTensor(), 
         transforms.Normalize(mean=[0.485, 0.456, 0.406],
                              std=[0.229, 0.224, 0.225]),
-        transforms.Resize((224, 224))
+        transforms.Resize((32, 32))
     ])
 
-    dataset = Cifar(transform, transform) #('mnist', download=True, transform=transform, target_transform=lambda x: torch.tensor(x, dtype=torch.long))#Mnist(transform, transform)
+    dataset = Mnist(transform, transform) #('mnist', download=True, transform=transform, target_transform=lambda x: torch.tensor(x, dtype=torch.long))#Mnist(transform, transform)
 
     sampler = DistributedSampler(dataset, shuffle=False)
     data_loader = DataLoader(
@@ -152,8 +152,8 @@ def get_args_parser():
     parser.add_argument("--lr", default=0.0001, type=float, help="""Learning rate at the end of
         linear warmup (highest LR used during training). The learning rate is linearly scaled
         with the batch size, and specified here for a reference batch size of 256.""")
-    parser.add_argument('--epochs', default=1000, type=int, help='Number of epochs of training.')
-    parser.add_argument("--warmup_epochs", default=50, type=int,
+    parser.add_argument('--epochs', default=10, type=int, help='Number of epochs of training.')
+    parser.add_argument("--warmup_epochs", default=1, type=int,
         help="Number of epochs for the linear learning-rate warm up.") # with the actual 100? or 150?
     parser.add_argument('--min_lr', type=float, default=1e-6, help="""Target LR at the
         end of optimization. We use a cosine LR schedule with linear warmup.""")

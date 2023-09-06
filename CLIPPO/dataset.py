@@ -175,7 +175,11 @@ class Cifar(Dataset):
         #     print(label)
         return image, text
 
-class Mnist(Dataset): 
+class Mnist(Dataset):
+
+    counter = NaiveCounter()
+    fonts = ["deval.otf", "unifont-15.0.06.otf", "fcb.otf", "fcl.otf"]
+
     def __init__(self, text_transforms=None, image_transforms=None) -> None:
         self.data = MNIST('mnist', download=True)
         self.text_transfroms = text_transforms
@@ -189,10 +193,10 @@ class Mnist(Dataset):
         # print(index)
         # print("len is : "+ str(self.data[0][1]))
         # exit(-1)
-        print("image type ",type(image))
+        # print("image type ",type(image))
         if self.image_transforms: 
             image = self.image_transforms(image.convert('RGB'))  
-        text = render_text(str(text), image_size=32).convert('RGB')
+        text = render_text(str(text), image_size=32, font_name=self.fonts[self.counter + 1]).convert('RGB')
         if self.text_transfroms:
             text = self.text_transfroms(text)
         return image, text
