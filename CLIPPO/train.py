@@ -47,10 +47,7 @@ def train_one_epoch(clippo, data_loader, optimizer, lr_schedule, epoch, args):
         clippo.backward(total_loss)
         if args.clip_grad:
             utils.clip_gradients(clippo, args.clip_grad)
-        optimizer.step()        
-
-        """if utils.get_rank() == 0:
-            torch.save(clippo.state_dict(), 'trash2.pt')"""
+        optimizer.step()
 
     clippo.tput_timer.update_epoch_count()
     #TODO: return logs 
@@ -84,10 +81,10 @@ def main(args):
         transforms.ToTensor(), 
         transforms.Normalize(mean=[0.485, 0.456, 0.406],
                              std=[0.229, 0.224, 0.225]),
-        transforms.Resize((32, 32))
+        transforms.Resize((224, 224))
     ])
 
-    dataset = Mnist(transform, transform) #('mnist', download=True, transform=transform, target_transform=lambda x: torch.tensor(x, dtype=torch.long))#Mnist(transform, transform)
+    dataset = Cifar(transform, transform) #('mnist', download=True, transform=transform, target_transform=lambda x: torch.tensor(x, dtype=torch.long))#Mnist(transform, transform)
 
     sampler = DistributedSampler(dataset, shuffle=False)
     data_loader = DataLoader(
@@ -137,8 +134,10 @@ def main(args):
         # ============ writing logs ... ============
         #TODO: add logs 
         # print(loss)
-        if utils.get_rank() == 0:
-            torch.save(clippo.state_dict(), f'clippo{epoch}.pt')
+
+        if not epoch % 10:
+            if utils.get_rank() == 0:
+                torch.save(clippo.state_dict(), f'clippo{epoch}.pt')
 
 def get_args_parser():
     parser = argparse.ArgumentParser('CLIPPO', add_help=False)
@@ -152,8 +151,8 @@ def get_args_parser():
     parser.add_argument("--lr", default=0.0001, type=float, help="""Learning rate at the end of
         linear warmup (highest LR used during training). The learning rate is linearly scaled
         with the batch size, and specified here for a reference batch size of 256.""")
-    parser.add_argument('--epochs', default=10, type=int, help='Number of epochs of training.')
-    parser.add_argument("--warmup_epochs", default=1, type=int,
+    parser.add_argument('--epochs', default=1000, type=int, help='Number of epochs of training.')
+    parser.add_argument("--warmup_epochs", default=10, type=int,
         help="Number of epochs for the linear learning-rate warm up.") # with the actual 100? or 150?
     parser.add_argument('--min_lr', type=float, default=1e-6, help="""Target LR at the
         end of optimization. We use a cosine LR schedule with linear warmup.""")

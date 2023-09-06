@@ -1,5 +1,5 @@
 {
-    "train_micro_batch_size_per_gpu": 24,
+    "train_micro_batch_size_per_gpu": 8,
     "steps_per_print": 10,
     
     "zero_optimization": {
@@ -24,7 +24,7 @@
 
     "flops_profiler": {
         "enabled": true,
-        "profile_step": 1,
+        "profile_step": 10,
         "module_depth": -1,
         "top_modules": 1,
         "detailed": true,
