@@ -1,9 +1,0 @@
-2023-07-31 12:02:08,388 INFO    StreamThr :4061171 [internal.py:wandb_internal():86] W&B internal server running at pid: 4061171, started at: 2023-07-31 12:02:08.388483
-2023-07-31 12:02:08,391 DEBUG   HandlerThread:4061171 [handler.py:handle_request():144] handle_request: status
-2023-07-31 12:02:08,392 INFO    WriterThread:4061171 [datastore.py:open_for_write():85] open: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230731_120208-68ij8zkl/run-68ij8zkl.wandb
-2023-07-31 12:02:08,393 DEBUG   SenderThread:4061171 [sender.py:send():375] send: header
-2023-07-31 12:02:08,450 DEBUG   SenderThread:4061171 [sender.py:send():375] send: run
-2023-07-31 12:02:14,138 INFO    SenderThread:4061171 [dir_watcher.py:__init__():219] watching files in: /home/temp/Desktop/KD/CLIPPO/wandb/run-20230731_120208-68ij8zkl/files
-2023-07-31 12:02:14,139 INFO    SenderThread:4061171 [sender.py:_start_run_threads():1124] run started: 68ij8zkl with start time 1690794128.387046
-2023-07-31 12:02:14,139 DEBUG   HandlerThread:4061171 [handler.py:handle_request():144] handle_request: status_report
-2023-07-31 12:02:14,394 INFO    MainThread:4061171 [internal.py:handle_exit():76] Internal process exited

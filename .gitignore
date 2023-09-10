@@ -1,4 +1,6 @@
 */*.pt
+*.pt
+*.ipynb
 */*.ipynb
 */*.csv
 *.csv
