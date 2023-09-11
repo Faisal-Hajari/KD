@@ -7,7 +7,7 @@
     },
 
     "fp16": {
-        "enabled": false,
+        "enabled": true,
         "loss_scale_window": 100
     },
 

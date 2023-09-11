@@ -3,3 +3,11 @@
 */*.csv
 *.csv
 */wandb
+*.pt 
+*.ipynb
+outputs
+mnist
+data
+*.tar.gz
+*.tar
+.vscode

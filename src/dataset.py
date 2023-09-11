@@ -4,26 +4,16 @@ from torch.utils.data import Dataset
 import pandas as pd 
 import torch 
 import csv 
-import time
 import torch
-import torchvision
 import numpy as np
-import matplotlib.pyplot as plt
-import torch.nn as nn
-import torch.nn.functional as F
 from torchvision.datasets import CIFAR10
-from torchvision.transforms import ToTensor
-from torchvision.utils import make_grid
-from torch.utils.data.dataloader import DataLoader
-from torch.utils.data import random_split
-import torchvision.transforms as T
-
+from torchvision.datasets import MNIST
 
 
 def render_text(txt:str, image_size: int=224, font_size: int = 16, max_chars=768,
                        background_brightness=127, text_brightness=0,
                        lower=True, monospace=False, spacing=1, min_width=4,
-                       resize_method="area", max_width=28, font_name="unifont-15.0.06.otf", noise=False):
+                       resize_method="area", max_width=28, font_name="src/fonts/unifont-15.0.06.otf", noise=False):
     if len(txt)> max_chars:
         txt = txt[:max_chars]
     if lower: 
@@ -92,8 +82,6 @@ class CC3M(Dataset):
     def __len__(self): 
         return len(self.df)
 
-from torchvision.datasets import CIFAR10
-from torchvision.datasets import MNIST
 
 class NaiveCounter:
     number = 0
@@ -109,7 +97,7 @@ class NaiveCounter:
 
 class Cifar(Dataset): 
     
-    fonts = ["deval.otf", "unifont-15.0.06.otf", "fcb.otf", "fcl.otf"]
+    fonts = ["src/fonts/deval.otf", "src/fonts/unifont-15.0.06.otf", "src/fonts/fcb.otf", "src/fonts/fcl.otf"]
     airplane_font = NaiveCounter()
     automobile_font = NaiveCounter()
     bird_font = NaiveCounter()
@@ -178,7 +166,7 @@ class Cifar(Dataset):
 class Mnist(Dataset):
 
     counter = NaiveCounter()
-    fonts = ["deval.otf", "unifont-15.0.06.otf", "fcb.otf", "fcl.otf"]
+    fonts = ["src/fonts/deval.otf", "src/fonts/unifont-15.0.06.otf", "src/fonts/fcb.otf", "src/fonts/fcl.otf"]
 
     def __init__(self, text_transforms=None, image_transforms=None) -> None:
         self.data = MNIST('mnist', download=True)
@@ -190,10 +178,6 @@ class Mnist(Dataset):
     
     def __getitem__(self, index):
         image, text = self.data[index]
-        # print(index)
-        # print("len is : "+ str(self.data[0][1]))
-        # exit(-1)
-        # print("image type ",type(image))
         if self.image_transforms: 
             image = self.image_transforms(image.convert('RGB'))  
         text = render_text(str(text), image_size=32, font_name=self.fonts[self.counter + 1]).convert('RGB')
@@ -232,26 +216,6 @@ class TestCifar(Dataset):
     
     def __getitem__(self, index):
         image, text = self.data[index]
-        #   if str(text)=='0': 
-        #     text = 'airplane'
-        # elif str(text)=='1': 
-        #     text='automobile'
-        # elif str(text)=='2': 
-        #     text = 'bird'
-        # elif str(text)=='3': 
-        #     text='cat'
-        # elif str(text)=='4': 
-        #     text='deer'
-        # elif str(text)=='5': 
-        #     text = 'dog'
-        # elif str(text)=='6': 
-        #     text = 'frog'
-        # elif str(text)=='7': 
-        #     text = 'horse'
-        # elif str(text)=='8': 
-        #     text = 'ship'
-        # elif str(text)=='9': 
-        #     text = 'truck'
         if self.image_transforms: 
             image = self.image_transforms(image.convert('RGB'))  
         if str(text)=='0': 
@@ -276,8 +240,9 @@ class TestCifar(Dataset):
             txtimage = render_text('truck', image_size=224).convert('RGB')
         if self.text_transfroms:
             txtimage = self.text_transfroms(txtimage)
-        
         return image, txtimage, text
+    
+
 class Mnist2(Dataset): 
     tmp=0
     tmp2=0
