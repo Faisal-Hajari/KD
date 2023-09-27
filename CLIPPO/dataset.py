@@ -11,7 +11,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import torch.nn as nn
 import torch.nn.functional as F
-from torchvision.datasets import CIFAR10
+from torchvision.datasets import CIFAR10, CIFAR100
 from torchvision.transforms import ToTensor
 from torchvision.utils import make_grid
 from torch.utils.data.dataloader import DataLoader
@@ -130,6 +130,40 @@ class Cifar(Dataset):
         #     print(label)
         return image, text
 
+class Cifar100(Dataset): 
+    def __init__(self, text_transforms=None, image_transforms=None) -> None:
+        self.dataset = CIFAR100(root='data/', download=True)
+        self.text_transfroms = text_transforms
+        self.image_transforms = image_transforms
+        self.classes = self.dataset.classes
+        print(self.classes)
+    class_count = {}
+    def __len__(self): 
+        return len(self.dataset)
+
+    def __getitem__(self, index):
+        image, text = self.dataset[index]
+
+        #print("type image ", type(image))
+        if self.image_transforms: 
+            image = self.image_transforms(image.convert('RGB'))
+        text = render_text(str(text), image_size=224).convert('RGB')
+        if self.text_transfroms:
+            text = self.text_transfroms(text)
+        # print("text ====", label)
+        # print(type(image))
+        # transform = T.ToPILImage()
+        # img = transform(image)
+        # img.show()
+        # exit(-1)
+        # for _, index in self.dataset:
+        #     label = self.classes[index]
+        #     if label not in self.class_count:
+        #         self.class_count[label] = 0
+        #     self.class_count[label] += 1
+        #     print(label)
+        return image, text
+
 class Mnist(Dataset): 
     def __init__(self, text_transforms=None, image_transforms=None) -> None:
         self.data = MNIST('mnist', download=True)
@@ -171,6 +205,44 @@ class TestMnist(Dataset):
         
         return image, txtimage, text
 
+class TestCifar100(Dataset): 
+    def __init__(self, text_transforms=None, image_transforms=None) -> None:
+        self.data =  CIFAR100(root='data/', train=False)
+        self.text_transfroms = text_transforms
+        self.image_transforms = image_transforms
+    
+    def __len__(self): 
+        return len(self.data)
+    
+    def __getitem__(self, index):
+        image, text = self.data[index]
+        #   if str(text)=='0': 
+        #     text = 'airplane'
+        # elif str(text)=='1': 
+        #     text='automobile'
+        # elif str(text)=='2': 
+        #     text = 'bird'
+        # elif str(text)=='3': 
+        #     text='cat'
+        # elif str(text)=='4': 
+        #     text='deer'
+        # elif str(text)=='5': 
+        #     text = 'dog'
+        # elif str(text)=='6': 
+        #     text = 'frog'
+        # elif str(text)=='7': 
+        #     text = 'horse'
+        # elif str(text)=='8': 
+        #     text = 'ship'
+        # elif str(text)=='9': 
+        #     text = 'truck'
+        if self.image_transforms: 
+            image = self.image_transforms(image.convert('RGB'))  
+        txtimage = render_text(str(text), image_size=224).convert('RGB')
+        if self.text_transfroms:
+            txtimage = self.text_transfroms(txtimage)
+        
+        return image, txtimage, text
 
 class TestCifar(Dataset): 
     def __init__(self, text_transforms=None, image_transforms=None) -> None:
@@ -229,6 +301,8 @@ class TestCifar(Dataset):
             txtimage = self.text_transfroms(txtimage)
         
         return image, txtimage, text
+
+
 class Mnist2(Dataset): 
     tmp=0
     tmp2=0

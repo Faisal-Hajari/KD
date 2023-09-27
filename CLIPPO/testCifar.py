@@ -15,7 +15,7 @@ import torchvision.transforms as T
 
 clippo = CLIPPO()
 clippo = clippo.cpu()
-clippo.load_state_dict(torch.load("trash2.pt")) 
+clippo.load_state_dict(torch.load("testtrash2.pt")) 
 
 from torchvision import datasets, transforms
 transform = transforms.Compose([

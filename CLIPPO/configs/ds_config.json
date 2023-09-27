@@ -19,7 +19,7 @@
         "queue_depth": 16,
         "single_submit": false,
         "overlap_events": true,
-        "thread_count": 2
+        "thread_count": 3
     },
 
     "flops_profiler": {

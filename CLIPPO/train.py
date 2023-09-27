@@ -14,8 +14,9 @@ import torchvision.transforms as T
 from PIL import Image
 import wandb
 import utils
-from dataset import  Cifar,Mnist
+from dataset import  Cifar,Mnist,Cifar100
 from network import CLIPPO
+#from networkOriginal import CLIPPO
 from tim_and_bert import CLIP, DINOLoss
 
 import deepspeed
@@ -82,7 +83,8 @@ def main(args):
         transforms.Resize((224, 224))
     ])
 
-    dataset = Cifar(transform, transform) #('mnist', download=True, transform=transform, target_transform=lambda x: torch.tensor(x, dtype=torch.long))#Mnist(transform, transform)
+    dataset = Cifar100(transform, transform) #('mnist', download=True, transform=transform, target_transform=lambda x: torch.tensor(x, dtype=torch.long))#Mnist(transform, transform)
+    #dataset = Mnist(transform, transform) #('mnist', download=True, transform=transform, target_transform=lambda x: torch.tensor(x, dtype=torch.long))#Mnist(transform, transform)
 
     sampler = DistributedSampler(dataset, shuffle=False)
     data_loader = DataLoader(

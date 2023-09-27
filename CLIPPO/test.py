@@ -1,3 +1,4 @@
+from collections import OrderedDict
 import pandas as pd 
 from dataset import * 
 from tqdm import tqdm 
@@ -12,10 +13,23 @@ import matplotlib.pyplot as plt
 import pandas as pd 
 from sklearn.decomposition import PCA
 import torchvision.transforms as T
-
 clippo = CLIPPO()
 clippo = clippo.cpu()
-clippo.load_state_dict(torch.load("clippo_test_small.pt")) 
+
+
+checkpoint = torch.load("trash3.pt")
+new_state_dict = OrderedDict()
+for k, v in checkpoint.items():
+    # if 'backbone' in k or 'transformer' in k:
+    name = k.replace('bbox', 'point') # remove `module.`，表面从第7个key值字符取到最后一个字符，正好去掉了module.
+    new_state_dict[name.replace('module.', '')] = v
+clippo.load_state_dict(new_state_dict)
+
+
+
+#clippo.load_state_dict(torch.load("trash22.pt")) 
+
+
 
 from torchvision import datasets, transforms
 transform = transforms.Compose([
